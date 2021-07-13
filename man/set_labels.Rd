@@ -2,39 +2,41 @@
 % Please edit documentation in R/Labels.R
 \name{set_labels}
 \alias{set_labels}
-\title{Asigna etiquetas de datos a las variables especificadas}
+\title{Assign data labels to specified variables}
 \usage{
 set_labels(tbl, vars = NULL, dict, ignore_case = FALSE)
 }
 \arguments{
-\item{tbl}{\link{data.frame}: Conexión a base de datos o dataframe con los datos}
+\item{tbl}{\link{data.frame}: Data.frame with the data}
 
-\item{vars}{\link{character}: Si especificado, solo se asignaran las etiquetas a esas variables.}
+\item{vars}{\link{character}: If specified, only labels are assigned to those variables}
 
-\item{dict}{\link{data.frame}: Diccionario con todas las etiquetas de datos a utilizar}
+\item{dict}{\link{data.frame}: Dictionary with all the data labels to use}
 
 \item{ignore_case}{\link{logical}: Indicate if case sensitive should be ignored.}
 }
 \value{
-Los datos introducidos en el argumento \code{tbl} pero con etiquetas de datos
+The data entered in the \code{tbl} argument but with data labels
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
-\details{
-Esta función permite asignar etiquetas de datos a las variables de un data.frame
-o equivalente, a partir de un diccionario suministrado. En tal sentido,
-puedes utilizar esta función suministrando un diccionario peronal o utilizar
-las funciones equivalentes en los paquetes ENDOMER que traen un diccionario
-predefinido.
-}
 \examples{
 \dontrun{
-  enft <- data.frame(S2_P8 = c(1, 2))
-  str(enft)
-  str(set_labels(enft, dict = dict))
+  dict <- list(
+    SEX = list(
+      lab = "Sex of the person",
+      labs = c(
+        "Man" = 1,
+        "Woman" = 2
+      )
+    )
+  )
+  df <- data.frame(SEX = c(1, 2))
+  str(df)
+  str(set_labels(df, dict = dict))
 }
 }
 \seealso{
-Etiquetas de datos \code{vignette("labels", package = "endomer")}
+Data labels \code{vignette("labeler", package = "labeler")}
 }

@@ -1,31 +1,34 @@
-#' Asigna etiquetas de datos a las variables especificadas
+#' Assign data labels to specified variables
 #'
 #' `r lifecycle::badge("experimental")`
 #'
-#' @param tbl [data.frame]: Conexión a base de datos o dataframe con los datos
-#' @param vars [character]: Si especificado, solo se asignaran las etiquetas a esas variables.
-#' @param dict [data.frame]: Diccionario con todas las etiquetas de datos a utilizar
+#' @param tbl [data.frame]: Data.frame with the data
+#' @param vars [character]: If specified, only labels are assigned to those variables
+#' @param dict [data.frame]: Dictionary with all the data labels to use
 #' @param ignore_case [logical]: Indicate if case sensitive should be ignored.
 #'
-#' @return Los datos introducidos en el argumento \code{tbl} pero con etiquetas de datos
+#' @return The data entered in the \code{tbl} argument but with data labels
 #'
-#' @details
-#'   Esta función permite asignar etiquetas de datos a las variables de un data.frame
-#'   o equivalente, a partir de un diccionario suministrado. En tal sentido,
-#'   puedes utilizar esta función suministrando un diccionario peronal o utilizar
-#'   las funciones equivalentes en los paquetes ENDOMER que traen un diccionario
-#'   predefinido.
 #'
 #' @seealso
-#'   Etiquetas de datos \code{vignette("labels", package = "endomer")}
+#'   Data labels \code{vignette("labeler", package = "labeler")}
 #'
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#'   enft <- data.frame(S2_P8 = c(1, 2))
-#'   str(enft)
-#'   str(set_labels(enft, dict = dict))
+#'   dict <- list(
+#'     SEX = list(
+#'       lab = "Sex of the person",
+#'       labs = c(
+#'         "Man" = 1,
+#'         "Woman" = 2
+#'       )
+#'     )
+#'   )
+#'   df <- data.frame(SEX = c(1, 2))
+#'   str(df)
+#'   str(set_labels(df, dict = dict))
 #'}
 set_labels <- function(tbl, vars = NULL, dict, ignore_case = FALSE) {
   if(!is.null(vars)){
@@ -109,40 +112,40 @@ labellize <- function(tbl, var_name, lab, labs) {
 
 
 
-#' Utiliza las etiquetas de datos de una variable
+#' Use the data labels of a variable
 #'
 #' `r lifecycle::badge("experimental")`
 #'
-#' @param tbl [data.frame]: Conexión a base de datos o dataframe con los datos
-#' @param vars [character]: Si especificado, solo se asignaran las etiquetas a esas variables.
-#' @param dict [data.frame]: Diccionario con todas las etiquetas de datos a utilizar
-#'   si aún no han sido asignadas. Vea \code{Details}.
-#' @param ignore_case [logical]: Indicate if case sensitive should be ignored.
+#' @param tbl [data.frame]: Data.frame with the data
+#' @param vars [character]: If specified, only labels are assigned to those variables
+#' @param dict [data.frame]:Dictionary with all the data labels to use if they
+#'   have not yet been assigned. See \code{Details}
+#' @param ignore_case [logical]: Indicate if case sensitive should be ignored
 #'
-#' @return Los datos suministrados en el argumento \code{tbl}, pero en lugar de
-#'   valores utilizando las etiquetas de datos correspondientes
+#' @return The data supplied in the \code{tbl} argument, but instead of values
+#'   using the corresponding data labels
 #'
-#' @details Esta función asume que las etiquetas de datos han sido asignadas a
-#'   los datos con anterioridad, a menos que se suministre un \code{dict}, en cuyo
-#'   caso se utilizará este último para asignar y utilizar las etiquetas de datos.
-#'   En tal sentido, es recomendable utilizar las funciones equivalentes en los
-#'   paquetes ENDOMER que vienen con un diccionario
+#' @details This function assumes that the data labels have been assigned to the
+#'   data before, unless a \code{dict} is supplied, in which case the latter
+#'   will be used to assign and use the data labels.
 #'
 #' @seealso
-#'   Etiquetas de datos \code{vignette("labels", package = "endomer")}
+#'   Data labels \code{vignette("labeler", package = "labeler")}
 #'
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #'   dict <- list(
-#'     S2_P8 = list(
-#'       lab = "¿Tiene esta vivienda instalación para agua corriente por tubería
-#'        conectada a la red pública?",
-#'       labs = c("Si" = 1, "No" = 2)
+#'     SEX = list(
+#'       lab = "Sex of the person",
+#'       labs = c(
+#'         "Man" = 1,
+#'         "Woman" = 2
+#'       )
 #'     )
-#'    ) # enftr::dict
-#'   enft <- data.frame(S2_P8 = c(1, 2))
+#'    )
+#'   enft <- data.frame(SEX = c(1, 2))
 #'   enft
 #'   use_labels(enft, dict = dict)
 #'}

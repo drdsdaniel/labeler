@@ -1,4 +1,4 @@
 library(testthat)
-library(endomer)
+library(labeler)
 
-test_check("endomer")
+test_check("labeler")

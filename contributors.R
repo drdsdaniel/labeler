@@ -2,8 +2,8 @@
 
 library(tidyverse)
 contribs_all_json <- gh::gh("/repos/:owner/:repo/contributors",
-                            owner = "endomer",
-                            repo = "endomer",
+                            owner = "adatar-do",
+                            repo = "labeler",
                             .limit = Inf
 )
 contribs_all <- tibble(
