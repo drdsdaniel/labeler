@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# endomer <img src='man/figures/logo.png' align="right" height="138" />
+# labeler <img src='man/figures/logo.png' align="right" height="138" />
 
 <!-- badges: start -->
 

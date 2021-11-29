@@ -18,20 +18,20 @@ you can check the name and label of the variables, as well as the data labels.
 }
 \examples{
 \dontrun{
-  dict <- list(
-    SEX = list(
-      lab = "Sex of the person",
-      labs = c("Man" = 1, "Woman" = 2)
-    ),
-    MARITAL_STATUS = list(
-      lab = "Marital status of the person",
-      labs = c("Single" = 1, "Married" = 2, "Widower" = 3)
-    ),
-    HEIGHT = list(
-      lab = "Person height",
-      labs = c("Short" = 1, "Normal" = 2, "High" = 3)
-    )
+dict <- list(
+  SEX = list(
+    lab = "Sex of the person",
+    labs = c("Man" = 1, "Woman" = 2)
+  ),
+  MARITAL_STATUS = list(
+    lab = "Marital status of the person",
+    labs = c("Single" = 1, "Married" = 2, "Widower" = 3)
+  ),
+  HEIGHT = list(
+    lab = "Person height",
+    labs = c("Short" = 1, "Normal" = 2, "High" = 3)
   )
-  browse_dict(dict)
+)
+browse_dict(dict)
 }
 }
