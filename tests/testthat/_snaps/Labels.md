@@ -21,8 +21,8 @@
     Warning <lifecycle_warning_deprecated>
       `setLabels()` was deprecated in endomer 0.1.1.
       Please use `set_labels()` instead.
-      [90mThis warning is displayed once every 8 hours.[39m
-      [90mCall `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.[39m
+      This warning is displayed once every 8 hours.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
       'data.frame':	10 obs. of  3 variables:
        $ SEXO  : num  1 1 1 1 1 2 2 2 2 2
@@ -91,8 +91,8 @@
     Warning <lifecycle_warning_deprecated>
       `useLabels()` was deprecated in endomer 0.1.1.
       Please use `use_labels()` instead.
-      [90mThis warning is displayed once every 8 hours.[39m
-      [90mCall `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.[39m
+      This warning is displayed once every 8 hours.
+      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
     Output
            SEXO  ESTADO Altura
       1  Hombre Soltero      1
