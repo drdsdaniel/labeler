@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">labeler</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -128,7 +128,7 @@
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#experimental'><img src='figures/lifecycle-experimental.svg' alt='[Experimental]' /></a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>set_labels</span><span class='op'>(</span><span class='va'>tbl</span>, vars <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>dict</span>, ignore_case <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>set_labels</span><span class='op'>(</span><span class='va'>tbl</span>, <span class='va'>dict</span>, vars <span class='op'>=</span> <span class='cn'>NULL</span>, ignore_case <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,12 +138,12 @@
       <td><p><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a>: Data.frame with the data</p></td>
     </tr>
     <tr>
-      <th>vars</th>
-      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a>: If specified, only labels are assigned to those variables</p></td>
-    </tr>
-    <tr>
       <th>dict</th>
       <td><p><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a>: Dictionary with all the data labels to use</p></td>
+    </tr>
+    <tr>
+      <th>vars</th>
+      <td><p><a href='https://rdrr.io/r/base/character.html'>character</a>: If specified, only labels are assigned to those variables</p></td>
     </tr>
     <tr>
       <th>ignore_case</th>
@@ -160,18 +160,18 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
-<span class='r-in'>  <span class='va'>dict</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
-<span class='r-in'>    SEX <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
-<span class='r-in'>      lab <span class='op'>=</span> <span class='st'>"Sex of the person"</span>,</span>
-<span class='r-in'>      labs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
-<span class='r-in'>        <span class='st'>"Man"</span> <span class='op'>=</span> <span class='fl'>1</span>,</span>
-<span class='r-in'>        <span class='st'>"Woman"</span> <span class='op'>=</span> <span class='fl'>2</span></span>
-<span class='r-in'>      <span class='op'>)</span></span>
+<span class='r-in'><span class='va'>dict</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>  SEX <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span></span>
+<span class='r-in'>    lab <span class='op'>=</span> <span class='st'>"Sex of the person"</span>,</span>
+<span class='r-in'>    labs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span class='r-in'>      <span class='st'>"Man"</span> <span class='op'>=</span> <span class='fl'>1</span>,</span>
+<span class='r-in'>      <span class='st'>"Woman"</span> <span class='op'>=</span> <span class='fl'>2</span></span>
 <span class='r-in'>    <span class='op'>)</span></span>
 <span class='r-in'>  <span class='op'>)</span></span>
-<span class='r-in'>  <span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>SEX <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
-<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></span>
-<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='fu'>set_labels</span><span class='op'>(</span><span class='va'>df</span>, dict <span class='op'>=</span> <span class='va'>dict</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>SEX <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='fu'>set_labels</span><span class='op'>(</span><span class='va'>df</span>, dict <span class='op'>=</span> <span class='va'>dict</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>}</span></span>
 </pre>
   </div>
