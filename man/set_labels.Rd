@@ -4,14 +4,14 @@
 \alias{set_labels}
 \title{Assign data labels to specified variables}
 \usage{
-set_labels(tbl, vars = NULL, dict, ignore_case = FALSE)
+set_labels(tbl, dict, vars = NULL, ignore_case = FALSE)
 }
 \arguments{
 \item{tbl}{\link{data.frame}: Data.frame with the data}
 
-\item{vars}{\link{character}: If specified, only labels are assigned to those variables}
-
 \item{dict}{\link{data.frame}: Dictionary with all the data labels to use}
+
+\item{vars}{\link{character}: If specified, only labels are assigned to those variables}
 
 \item{ignore_case}{\link{logical}: Indicate if case sensitive should be ignored.}
 }
@@ -23,18 +23,18 @@ The data entered in the \code{tbl} argument but with data labels
 }
 \examples{
 \dontrun{
-  dict <- list(
-    SEX = list(
-      lab = "Sex of the person",
-      labs = c(
-        "Man" = 1,
-        "Woman" = 2
-      )
+dict <- list(
+  SEX = list(
+    lab = "Sex of the person",
+    labs = c(
+      "Man" = 1,
+      "Woman" = 2
     )
   )
-  df <- data.frame(SEX = c(1, 2))
-  str(df)
-  str(set_labels(df, dict = dict))
+)
+df <- data.frame(SEX = c(1, 2))
+str(df)
+str(set_labels(df, dict = dict))
 }
 }
 \seealso{
