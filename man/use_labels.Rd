@@ -4,15 +4,15 @@
 \alias{use_labels}
 \title{Use the data labels of a variable}
 \usage{
-use_labels(tbl, vars = NULL, dict = NULL, ignore_case = F)
+use_labels(tbl, dict, vars = NULL, ignore_case = F)
 }
 \arguments{
 \item{tbl}{\link{data.frame}: Data.frame with the data}
 
-\item{vars}{\link{character}: If specified, only labels are assigned to those variables}
-
-\item{dict}{\link{data.frame}:Dictionary with all the data labels to use if they
+\item{dict}{\link{data.frame}: Dictionary with all the data labels to use if they
 have not yet been assigned. See \code{Details}}
+
+\item{vars}{\link{character}: If specified, only labels are assigned to those variables}
 
 \item{ignore_case}{\link{logical}: Indicate if case sensitive should be ignored}
 }
@@ -30,18 +30,18 @@ will be used to assign and use the data labels.
 }
 \examples{
 \dontrun{
-  dict <- list(
-    SEX = list(
-      lab = "Sex of the person",
-      labs = c(
-        "Man" = 1,
-        "Woman" = 2
-      )
+dict <- list(
+  SEX = list(
+    lab = "Sex of the person",
+    labs = c(
+      "Man" = 1,
+      "Woman" = 2
     )
-   )
-  enft <- data.frame(SEX = c(1, 2))
-  enft
-  use_labels(enft, dict = dict)
+  )
+)
+enft <- data.frame(SEX = c(1, 2))
+enft
+use_labels(enft, dict = dict)
 }
 }
 \seealso{

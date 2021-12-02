@@ -38,7 +38,7 @@
 ---
 
     Code
-      str(set_labels(datos, vars = c("SEXO"), dict = dict))
+      str(set_labels(datos, dict = dict, vars = c("SEXO")))
     Output
       'data.frame':	10 obs. of  3 variables:
        $ SEXO  : num  1 1 1 1 1 2 2 2 2 2
@@ -109,7 +109,7 @@
 ---
 
     Code
-      use_labels(datos, vars = c("SEXO"), dict = dict)
+      use_labels(datos, dict = dict, vars = c("SEXO"))
     Output
            SEXO ESTADO Altura
       1  Hombre      1      1
@@ -126,7 +126,48 @@
 ---
 
     Code
-      use_labels(set_labels(datos, dict = dict, ignore_case = T))
+      set_labels(datos, dict = dict, vars = c("SEXO"))
+    Output
+         SEXO ESTADO Altura
+      1     1      1      1
+      2     1      1      1
+      3     1      1      1
+      4     1      1      1
+      5     1      2      2
+      6     2      2      2
+      7     2      2      2
+      8     2      2      2
+      9     2      3      3
+      10    2      3      3
+
+---
+
+    Code
+      set_labels(datos, dict = dict, vars = c("SEXO"))
+    Output
+         SEXO ESTADO Altura
+      1     1      1      1
+      2     1      1      1
+      3     1      1      1
+      4     1      1      1
+      5     1      2      2
+      6     2      2      2
+      7     2      2      2
+      8     2      2      2
+      9     2      3      3
+      10    2      3      3
+
+---
+
+    Code
+      set_labels(NULL, dict = dict, vars = c("SEXO"))
+    Output
+      NULL
+
+---
+
+    Code
+      use_labels(set_labels(datos, dict = dict, ignore_case = T), dict)
     Output
            SEXO  ESTADO Altura
       1  Hombre Soltero   Baja
@@ -139,4 +180,50 @@
       8   Mujer  Casado  Media
       9   Mujer   Viudo   Alta
       10  Mujer   Viudo   Alta
+
+---
+
+    Code
+      parse_dict(dict)
+    Output
+      $SEXO
+      $SEXO$lab
+      [1] "Sexo de la persona"
+      
+      $SEXO$labs
+      Hombre  Mujer 
+           1      2 
+      
+      
+      $ESTADO
+      $ESTADO$lab
+      [1] "Estado marital de la persona"
+      
+      $ESTADO$labs
+      Soltero  Casado   Viudo 
+            1       2       3 
+      
+      
+      $ALTURA
+      $ALTURA$lab
+      [1] "Altura de la persona"
+      
+      $ALTURA$labs
+       Baja Media  Alta 
+          1     2     3 
+      
+      
+      $Sexo2
+      $Sexo2$lab
+      [1] "link::SEXO"
+      
+      $Sexo2$labs
+      [1] "link::SEXO"
+      
+      
+      $Sexo3
+      $Sexo3$lab
+      [1] "Lab falsa"
+      
+      
 

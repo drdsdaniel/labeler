@@ -32,15 +32,18 @@ browse_dict <- function(dict) {
   for (name in names(dict)) {
     datos[nrow(datos) + 1, "var"] <- name
     lab <- dict[[name]]$lab
-    datos[nrow(datos), "lab"] <- iconv(lab)
+    lab <- validateLab(lab, dict)
+    datos[nrow(datos), "lab"] <- decode_lab(lab)
     labs <- dict[[name]]$labs
+    labs <- validateLabs(labs, dict)
+    labs <- decode_labs(labs)
     labs2 <- "<div>"
     for (lab in seq_along(labs)) {
       labs2 <- paste0(
         labs2,
         labs[[lab]],
         ": ",
-        iconv(names(labs)[[lab]]),
+        names(labs)[[lab]],
         "<br />"
       )
     }

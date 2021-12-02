@@ -97,7 +97,7 @@ str(set_labels(enft, dict = dict))
 
 Por otro lado, es importante mencionar que tal como se indica en la descripción de los argumentos de la función, es posible asignar las etiquetas de datos a algunas variables específicas.
 ```{r}
-str(set_labels(enft, vars = c("SEXO"), dict = dict))
+str(set_labels(enft, dict = dict, vars = c("SEXO")))
 ```
 
 Compare este resultado con el anterior para que pueda notar que contrario al primero, en este caso sólo la variable `SEXO` contiene etiquetas de datos, tal como se ha indicado en el llamado de la función.
@@ -114,7 +114,7 @@ enft2 <- enft
 
 enft2 <- set_labels(enft2, dict = dict)
 
-enft2 <- set_labels(enft2, vars = c("Genero"), dict = dict, ignore_case = T)
+enft2 <- set_labels(enft2, dict = dict, vars = c("Genero"), ignore_case = T)
 
 str(enft2)
 ```
@@ -172,7 +172,7 @@ Además, si por alguna razón quisieras sobreescribir algunas de las etiquetas p
 ```{r}
 dict[["SEXO"]]$labs <- c("H" = 1, "M" = 2)
 
-str(set_labels(enft, vars = c("SEXO"), dict = dict))
+str(set_labels(enft, dict = dict, vars = c("SEXO")))
 ```
 
 # La función use_labels()
@@ -195,7 +195,7 @@ Nótese que hemos pasado el diccionario a la función `use_labels()`, lo que nos
 ```{r}
 enft4 <- set_labels(enft, dict = dict, ignore_case = TRUE)
 
-use_labels(enft4)
+use_labels(enft4, dict = dict)
 ```
 
 O mejor aún, cada vez que generas una tabla resumen de tus datos. Lo que tiene la ventaja de operar sobre una menor cantidad de variables.
@@ -203,7 +203,7 @@ O mejor aún, cada vez que generas una tabla resumen de tus datos. Lo que tiene 
 enft4 %>% 
   dplyr::group_by(GENERO) %>% 
   dplyr::count() %>% 
-  use_labels()
+  use_labels(dict = dict)
 ```
 
 En este caso, sería totalmente factible asignar las etiquetas en el momento, sobretodo debido a que se estarían creando variables nuevas en todo momento. La única observación pertinente en este caso sería la de no sobre escribir los nombres de las variables de forma que las etiquetas sigan funcionando.
@@ -215,7 +215,7 @@ enft %>%
     ) %>% 
   dplyr::count() %>% 
   set_labels(dict = dict, ignore_case = T) %>% 
-  use_labels()
+  use_labels(NULL)
 ```
 
 Como se puede observar en el ejemplo anterior, a pesar de que he cambiado el nombre a la variable `SEXO`, con solo asignar el argumento `ignore_case = TRUE` la función fue capaz de asignar las etiquetas de datos. Mientras que en el caso de la variable `CASADO` he cambiado el nombre a uno que no se encuentra presente en el diccionario, por lo que la función no fue capaz de encontrar las etiquetas correspondientes. Esto se pudo haber conseguido de la siguiente manera, por ejemplo:
@@ -227,7 +227,7 @@ enft %>%
     ) %>% 
   dplyr::count() %>% 
   set_labels(dict = dict, ignore_case = T) %>% 
-  use_labels() %>% 
+  use_labels(NULL) %>% 
   dplyr::rename("estado_civil" = "CASADO")
 ```
 
@@ -241,7 +241,7 @@ enft %>%
     ) %>% 
   dplyr::count() %>% 
   set_labels(dict = dict, ignore_case = T) %>% 
-  use_labels(vars = c("Sexo")) %>% 
+  use_labels(NULL, vars = c("Sexo")) %>% 
   dplyr::rename("estado_civil" = "CASADO")
 ```
 
