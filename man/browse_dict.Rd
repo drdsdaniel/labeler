@@ -4,10 +4,12 @@
 \alias{browse_dict}
 \title{Browse dictionary}
 \usage{
-browse_dict(dict)
+browse_dict(dict, ...)
 }
 \arguments{
 \item{dict}{database dictionary}
+
+\item{...}{for testing purposes}
 }
 \value{
 a web interface with the data contained in the supplied dictionary

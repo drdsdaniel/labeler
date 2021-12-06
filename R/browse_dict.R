@@ -4,6 +4,7 @@
 #'  you can check the name and label of the variables, as well as the data labels.
 #'
 #' @param dict database dictionary
+#' @param ... for testing purposes
 #'
 #' @return a web interface with the data contained in the supplied dictionary
 #'
@@ -27,7 +28,7 @@
 #' )
 #' browse_dict(dict)
 #' }
-browse_dict <- function(dict) {
+browse_dict <- function(dict, ...) {
   datos <- data.frame(var = character(), lab = character(), labs = character())
   for (name in names(dict)) {
     datos[nrow(datos) + 1, "var"] <- name
@@ -49,7 +50,7 @@ browse_dict <- function(dict) {
     }
     datos[nrow(datos), "labs"] <- paste0(labs2, "</div>")
   }
-  DT::datatable(datos,
+  res <- DT::datatable(datos,
     escape = FALSE, width = "100%",
     options = list(
       autoWidth = FALSE,
@@ -59,4 +60,18 @@ browse_dict <- function(dict) {
       )
     )
   )
+
+  testing <- FALSE
+  tryCatch({
+      testing <- list(...)[["testing"]]
+    },
+    error = function(e) {
+    }
+  )
+
+  if (!is.null(testing)) {
+    datos
+  } else {
+   res
+  }
 }
