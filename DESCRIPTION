@@ -1,6 +1,6 @@
 Package: labeler
 Title: Easy to use and share data labels in R
-Version: 0.4.1
+Version: 0.4.3
 Authors@R:
     c(person(given = "Daniel E.",
            family = "de la Rosa",
