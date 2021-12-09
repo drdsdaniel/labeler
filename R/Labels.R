@@ -1,5 +1,4 @@
 #' Assign data labels to specified variables
-#'
 #' `r lifecycle::badge("experimental")`
 #'
 #' @param tbl [data.frame]: Data.frame with the data
@@ -151,8 +150,7 @@ labellize <- function(tbl, var_name, lab, labs) {
 
 
 
-#' Use the data labels of a variable
-#'
+#' Use the data labels of a variable instead of its values
 #' `r lifecycle::badge("experimental")`
 #'
 #' @param tbl [data.frame]: Data.frame with the data
@@ -160,6 +158,8 @@ labellize <- function(tbl, var_name, lab, labs) {
 #' @param dict [data.frame]: Dictionary with all the data labels to use if they
 #'   have not yet been assigned. See \code{Details}
 #' @param ignore_case [logical]: Indicate if case sensitive should be ignored
+#' @param check [logical]: If TRUE (default), the function will check if values
+#'   present in variable are valid data labels in dictionary.
 #'
 #' @return The data supplied in the \code{tbl} argument, but instead of values
 #'   using the corresponding data labels
@@ -188,7 +188,7 @@ labellize <- function(tbl, var_name, lab, labs) {
 #' enft
 #' use_labels(enft, dict = dict)
 #' }
-use_labels <- function(tbl, dict, vars = NULL, ignore_case = F) {
+use_labels <- function(tbl, dict, vars = NULL, ignore_case = F, check = TRUE) {
   if (!is.null(dict)) {
     tbl <- set_labels(tbl, dict, vars, ignore_case)
   }
@@ -200,8 +200,33 @@ use_labels <- function(tbl, dict, vars = NULL, ignore_case = F) {
     names <- NULL
   }
   if (all(!is.null(tbl), !is.na(vars))) {
+    nulas <- character()
     for (name in names) {
-      tbl[, name] <- asLabels(tbl[, name])
+      var <- tbl[, name]
+      tryCatch(
+        {
+          var2 <- sjlabelled::as_label(var)
+          if(check){
+            unicos <- unique(var)
+            unicos <- unicos[!is.na(unicos)]
+            if(sum(is.na(var)) != sum(is.na(var2))){
+              nulas <- c(nulas, name)
+              var2 <- var
+            }
+          }
+          var <- var2
+        },
+        error = function(e) {
+
+        }
+      )
+      tbl[, name] <- var
+    }
+    if(length(nulas) > 0){
+
+      warning(paste0("The following (", length(nulas),") variables contain values
+      that are not in the dictionary and were not labeled: \n", paste(nulas, collapse = ", "), '.
+      Please see "https://adatar-do.github.io/labeler/articles/labeler.html" for more details.'))
     }
     tbl
   }
@@ -210,19 +235,5 @@ use_labels <- function(tbl, dict, vars = NULL, ignore_case = F) {
 useLabels <- function(tbl, dict = NULL, vars = NULL) {
   deprecate_warn("0.1.1", "endomer::useLabels()", "use_labels()")
   use_labels(tbl, dict, vars)
-}
-
-
-
-
-asLabels <- function(var) {
-  tryCatch(
-    {
-      sjlabelled::as_label(var)
-    },
-    error = function(e) {
-      var
-    }
-  )
 }
 

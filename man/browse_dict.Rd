@@ -2,7 +2,8 @@
 % Please edit documentation in R/browse_dict.R
 \name{browse_dict}
 \alias{browse_dict}
-\title{Browse dictionary}
+\title{Browse dictionary
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}}
 \usage{
 browse_dict(dict, ...)
 }

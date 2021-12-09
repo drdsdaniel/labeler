@@ -2,9 +2,10 @@
 % Please edit documentation in R/Labels.R
 \name{use_labels}
 \alias{use_labels}
-\title{Use the data labels of a variable}
+\title{Use the data labels of a variable instead of its values
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}}
 \usage{
-use_labels(tbl, dict, vars = NULL, ignore_case = F)
+use_labels(tbl, dict, vars = NULL, ignore_case = F, check = TRUE)
 }
 \arguments{
 \item{tbl}{\link{data.frame}: Data.frame with the data}
@@ -15,12 +16,16 @@ have not yet been assigned. See \code{Details}}
 \item{vars}{\link{character}: If specified, only labels are assigned to those variables}
 
 \item{ignore_case}{\link{logical}: Indicate if case sensitive should be ignored}
+
+\item{check}{\link{logical}: If TRUE (default), the function will check if values
+present in variable are valid data labels in dictionary.}
 }
 \value{
 The data supplied in the \code{tbl} argument, but instead of values
 using the corresponding data labels
 }
 \description{
+Use the data labels of a variable instead of its values
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \details{

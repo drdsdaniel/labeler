@@ -1,12 +1,19 @@
 #' Replace non ASCII characters with ASCII equivalents
+#' `r lifecycle::badge('experimental')`
 #'
-#' @param dict A dictionary. See vignette('labeler') for details.
+#' @param dict A dictionary. See `vignette('labeler', package = "labeler")` for details.
 #'
 #' @return A dictionary with all non ASCII characters replaced with ASCII
 #' @export
 #'
 #' @examples
 #' \dontrun{
+#'    dict = list(
+#'              MARRIED = list(
+#'                "Sí" = 1,
+#'                "No" = 2
+#'              )
+#'            )
 #'    parse_dict(dict)
 #'  }
 parse_dict <- function(dict) {

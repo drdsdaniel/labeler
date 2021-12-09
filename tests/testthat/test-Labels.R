@@ -14,18 +14,19 @@ test_that("labels", {
       labs = c("Baja" = 1, "Media" = 2, "Alta" = 3)
     ),
     Sexo2 = list(
-      lab = "link::SEXO",
+      lab = "Palabras cón caracteres nó ASCII",
       labs = "link::SEXO"
-    ),
-    Sexo3 = list(
-      lab = "Lab falsa"
     )
   )
   datos <- data.frame(
     SEXO = c(rep(1, 5), rep(2, 5)),
+    Sexo2 = c(rep(1, 5), rep(2, 5)),
+    Sexo3 = c(rep(1, 5), rep(2, 5)),
     ESTADO = c(rep(1, 4), rep(2, 4), 3, 3),
     Altura = c(rep(1, 4), rep(2, 4), 3, 3)
   )
+  expect_snapshot(parse_dict(dict))
+
   expect_snapshot(str(set_labels(datos, dict = dict)))
   expect_snapshot(str(setLabels(datos, dict = dict)))
   expect_snapshot(str(set_labels(datos, dict = dict, vars = c("SEXO"))))
@@ -34,9 +35,11 @@ test_that("labels", {
   expect_snapshot(use_labels(datos, dict = dict))
   expect_snapshot(useLabels(datos, dict = dict))
   expect_snapshot(use_labels(datos, dict = dict, vars = c("SEXO")))
-  expect_snapshot(set_labels(datos, dict = dict, vars = c("SEXO")))
-  expect_snapshot(set_labels(datos, dict = dict, vars = c("SEXO")))
-  expect_snapshot(set_labels(NULL, dict = dict, vars = c("SEXO")))
-  expect_snapshot(use_labels(set_labels(datos, dict = dict, ignore_case = T), dict))
-  expect_snapshot(parse_dict(dict))
+  expect_snapshot(use_labels(datos, dict = dict, check = FALSE))
+  expect_null(set_labels(NULL, dict = dict, vars = c("SEXO")))
+  expect_snapshot(use_labels(set_labels(datos, dict = dict, ignore_case = T), NULL))
+
+  expect_null(set_labels(NULL, NULL, NULL))
+  dict[["Sexo3"]] <- list(lab = 5, labs = c(1, 2))
+  expect_snapshot(use_labels(datos, dict = dict))
 })

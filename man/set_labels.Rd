@@ -2,7 +2,8 @@
 % Please edit documentation in R/Labels.R
 \name{set_labels}
 \alias{set_labels}
-\title{Assign data labels to specified variables}
+\title{Assign data labels to specified variables
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}}
 \usage{
 set_labels(tbl, dict, vars = NULL, ignore_case = FALSE)
 }
@@ -19,6 +20,7 @@ set_labels(tbl, dict, vars = NULL, ignore_case = FALSE)
 The data entered in the \code{tbl} argument but with data labels
 }
 \description{
+Assign data labels to specified variables
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
