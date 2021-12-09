@@ -39,6 +39,7 @@ test_that("labels", {
   expect_null(set_labels(NULL, dict = dict, vars = c("SEXO")))
   expect_snapshot(use_labels(set_labels(datos, dict = dict, ignore_case = T), NULL))
 
+  expect_snapshot(use_labels(dplyr::mutate(Sexo2 = Sexo2 + 1), dict = dict))
   expect_null(set_labels(NULL, NULL, NULL))
   dict[["Sexo3"]] <- list(lab = 5, labs = c(1, 2))
   expect_snapshot(use_labels(datos, dict = dict))
