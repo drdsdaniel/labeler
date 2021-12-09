@@ -1,4 +1,5 @@
 #' Browse dictionary
+#' `r lifecycle::badge('experimental')`
 #'
 #'  Allows you to browse the dictionary of the surveys in a web interface where
 #'  you can check the name and label of the variables, as well as the data labels.

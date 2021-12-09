@@ -2,21 +2,29 @@
 % Please edit documentation in R/parse_dict.R
 \name{parse_dict}
 \alias{parse_dict}
-\title{Replace non ASCII characters with ASCII equivalents}
+\title{Replace non ASCII characters with ASCII equivalents
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}}
 \usage{
 parse_dict(dict)
 }
 \arguments{
-\item{dict}{A dictionary. See vignette('labeler') for details.}
+\item{dict}{A dictionary. See \code{vignette('labeler', package = "labeler")} for details.}
 }
 \value{
 A dictionary with all non ASCII characters replaced with ASCII
 }
 \description{
 Replace non ASCII characters with ASCII equivalents
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
 \dontrun{
+   dict = list(
+             MARRIED = list(
+               "Sí" = 1,
+               "No" = 2
+             )
+           )
    parse_dict(dict)
  }
 }
