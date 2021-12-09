@@ -4,20 +4,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Etiquetas de datos (Labels) • labeler</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="labeler">
+<title>Easy to use and share labels in R • labeler</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Etiquetas de datos (Labels)">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Easy to use and share labels in R">
 <meta property="og:description" content="labeler">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -25,513 +25,305 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">labeler</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
-      </span>
-    </div>
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">labeler</a>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../articles/labeler.html">Get started</a>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-2">
+      <ul class="navbar-nav me-auto">
+<li class="active nav-item">
+  <a class="nav-link" href="../articles/labeler.html">Get started</a>
 </li>
-<li>
-  <a href="../reference/index.html">Reference</a>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/adatar-do/labeler/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/adatar-do/labeler/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
-
-      
-
-      </header><script src="labeler_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="labeler_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="labeler_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+</nav><div class="container template-article">
+<script src="labeler_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="labeler_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="labeler_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
 <script src="labeler_files/datatables-binding-0.20/datatables.js"></script><script src="labeler_files/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="labeler_files/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="labeler_files/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet">
 <script src="labeler_files/dt-core-1.11.3/js/jquery.dataTables.min.js"></script><link href="labeler_files/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="labeler_files/crosstalk-1.2.0/js/crosstalk.min.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Etiquetas de datos (Labels)</h1>
+  <main id="main"><div class="page-header">
+      <img src="../logo.png" class="logo" alt=""><h1>Easy to use and share labels in R</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/adatar-do/labeler/blob/HEAD/vignettes/labeler.Rmd" class="external-link"><code>vignettes/labeler.Rmd</code></a></small>
-      <div class="hidden name"><code>labeler.Rmd</code></div>
-
+      <div class="d-none name"><code>labeler.Rmd</code></div>
     </div>
 
     
     
-<div class="section level1">
-<h1 id="etiquetas-de-datos-en-r">Etiquetas de datos en R<a class="anchor" aria-label="anchor" href="#etiquetas-de-datos-en-r"></a>
-</h1>
-<p>COmo funcionan actualmente con haven por ejemplo.</p>
-<p>Ventjas del enfoque actual:</p>
+<div class="section level2">
+<h2 id="labelled-data-in-r">Labelled data in R<a class="anchor" aria-label="anchor" href="#labelled-data-in-r"></a>
+</h2>
+<p>Historically, software like SPSS, SAS or Stata have worked with labelled data. The closest function in R base corresponds to factors, which actually work in reverse, assigning values to text variables with few distinct values.</p>
+<p>Being able to work with labelled data is one of the features that R users who come from the previously mentioned systems miss the most.</p>
+<p>In the R ecosystem there are 3 fundamental packages for working with labelled data <code>haven</code>, <code>labelled</code> y <code>sjlabelled</code><a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;See &lt;a href="https://www.pipinghotdata.com/posts/2020-12-23-leveraging-labelled-data-in-r/" class="external-link uri"&gt;https://www.pipinghotdata.com/posts/2020-12-23-leveraging-labelled-data-in-r/&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a>.</p>
+<p>However, these packages work in a similar way. They all expect you to load previously labelled data or assign the labels manually for each of the variables.</p>
+<p>If you work with a dozen variables, this scheme is possible. However, as the number of variables grows, this scheme becomes difficult to handle. It should even be noted that some operations in R remove most of the attributes on objects, so perhaps some labels may even have to be assigned repeatedly.</p>
+<p>In this sense, <code>labeler</code> offers a new scheme to work with labelled data in R, which is based on:</p>
 <ol style="list-style-type: decimal">
-<li>Las etiquetas no funcionan con bases de datos.Como las etiquetas se asignan una a una es complicado. (Mostar un ejemplo con un sqlite en memoria)</li>
-<li>Es fácil compartir el diccionario de datos.</li>
+<li>The data does not need to be pre-labelled or manually labelled. For these purposes a dictionary, that may have been received with the data or built on the fly, is used.</li>
+<li>The assignment of the labels is done at the end of the pipeline, and in a semi-automated way.</li>
 </ol>
 </div>
-<div class="section level1">
-<h1 id="el-diccionario">El diccionario<a class="anchor" aria-label="anchor" href="#el-diccionario"></a>
-</h1>
-<p>En principio, cada uno de los paquetes correspondientes a las distintas encuestas cuenta con un diccionario de variables precargadas que se pueden utilizar para asignar y utilizar cuando se manipulen los datos de la encuesta en R.</p>
-<p>Cada uno de los paquetes contiene una viñeta llamada <code>Diccionario</code> en la que se incluye un indicador del nivel de avance en la construcción del diccionario, así como una tabla en la que este se puede visualizar de manera interactiva.</p>
-<p>El objeto <code>diccionario</code> consiste en una lista que contiene dentro cada una de las variables que se desea etiquetar. Las <code>variables</code> a su vez, consisten en listas que contienen dentro:</p>
+<div class="section level2">
+<h2 id="the-dictionary">The dictionary<a class="anchor" aria-label="anchor" href="#the-dictionary"></a>
+</h2>
+<p>The <code>dictionary</code> object consists of a list that contains each of the variables to be labeled. The <code>variables</code> in turn, consist of lists that contain inside:</p>
 <ol style="list-style-type: decimal">
 <li>
-<strong>lab</strong>: Una cadena de caracteres que describe la variable.</li>
+<strong>lab</strong>: A character string that describes the variable.</li>
 <li>
-<strong>labs</strong>: Un vector nombrado de los posibles valores que toma la variable.</li>
+<strong>labs</strong>: A named vector of the possible values that the variable takes.</li>
 </ol>
-<p>En tal sentido, un diccionario válido en endomer se puede construir y se visualiza de la siguiente manera:</p>
+<p>In this sense, a valid dictionary in <code>labeler</code> can be built and is displayed as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dict</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  SEXO <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    lab <span class="op">=</span> <span class="st">"Sexo de la persona"</span>,
-    labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Hombre"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"Mujer"</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+  GENDER <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+    lab <span class="op">=</span> <span class="st">"Gender of the person"</span>,
+    labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Man"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"Woman"</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
   <span class="op">)</span>,
-  EDAD <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    lab <span class="op">=</span> <span class="st">"Edad de la persona"</span>
+  AGE <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+    lab <span class="op">=</span> <span class="st">"Age of the person"</span>
   <span class="op">)</span>,
-  Genero <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    lab <span class="op">=</span> <span class="st">"link::SEXO"</span>,
-    labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Hombre"</span> <span class="op">=</span> <span class="fl">0</span>, <span class="st">"Mujer"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+  SEX <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+    lab <span class="op">=</span> <span class="st">"link::GENDER"</span>,
+    labs <span class="op">=</span> <span class="st">"link::GENDER"</span>
   <span class="op">)</span>,
-  Casado <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    lab <span class="op">=</span> <span class="st">"Indica si la persona está o no casada"</span>,
-    labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"No"</span> <span class="op">=</span> <span class="fl">0</span>, <span class="st">"Si"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+  Married <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
+    lab <span class="op">=</span> <span class="st">"Indicates whether or not the person is married"</span>,
+    labs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"No"</span> <span class="op">=</span> <span class="fl">0</span>, <span class="st">"Yes"</span> <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
   <span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">dict</span>
-<span class="co">#&gt; $SEXO</span>
-<span class="co">#&gt; $SEXO$lab</span>
-<span class="co">#&gt; [1] "Sexo de la persona"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $SEXO$labs</span>
-<span class="co">#&gt; Hombre  Mujer </span>
-<span class="co">#&gt;      1      2 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $EDAD</span>
-<span class="co">#&gt; $EDAD$lab</span>
-<span class="co">#&gt; [1] "Edad de la persona"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $Genero</span>
-<span class="co">#&gt; $Genero$lab</span>
-<span class="co">#&gt; [1] "link::SEXO"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $Genero$labs</span>
-<span class="co">#&gt; Hombre  Mujer </span>
-<span class="co">#&gt;      0      1 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $Casado</span>
-<span class="co">#&gt; $Casado$lab</span>
-<span class="co">#&gt; [1] "Indica si la persona está o no casada"</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $Casado$labs</span>
-<span class="co">#&gt; No Si </span>
-<span class="co">#&gt;  0  1</span></code></pre></div>
-<p>Algunos de los elementos más destacables de esta estructura se explicarán con detalle más adelante. Sin embargo, resulta oportuno destacar que como regla general, <code>lab</code> siempre estará presente en la variable, mientras que <code>labs</code> solo necesita estarlo en las variables en las que aplique.</p>
-<p>Siguiendo estos criterios básicos puede crear un diccionario personalizado, ya sea construyéndolo de cero, o modificando el que ya viene predeterminado en el paquete, agregando por ejemplo etiquetas para las variables que vaya creando a través de su análisis.</p>
+<span class="op">)</span></code></pre></div>
+<p>Following these basic criteria, you can create a custom dictionary, either by building it from scratch, or by adding the necessary labels for the variables that you create through your analysis.</p>
+<div class="section level3">
+<h3 id="parsing-the-dictionary">Parsing the dictionary<a class="anchor" aria-label="anchor" href="#parsing-the-dictionary"></a>
+</h3>
+<p>Working with non-ASCII characters in R is a tedious task. <code>labeler</code> offers a way to work with non-ASCII characters in dictionaries. For these purposes there is the <code><a href="../reference/parse_dict.html">parse_dict()</a></code> function that allows parsing a dictionary to replace these characters. Note that this process is necessary only if the dictionary is intended to be saved as a valid R object, as part of a package for example. The other functions in <code>labeler</code> are designed to reverse this automatic forming process.</p>
 </div>
-<div class="section level1">
-<h1 id="función-set_labels">Función set_labels()<a class="anchor" aria-label="anchor" href="#funci%C3%B3n-set_labels"></a>
-</h1>
-<p>Esta función, tiene como objetivo principal tomar las etiquetas de variables de y de valores disponibles en un diccionario y aplicarlos a una tabla de datos o dataframe. Para tales fines esta función toma los siguientes argumentos <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
-<ol style="list-style-type: decimal">
-<li>
-<strong>tbl</strong>: una tabla de datos o dataframe.</li>
-<li>
-<strong>vars</strong>: un listado de las variables a las que se les ha de aplicar etiquetas.</li>
-<li>
-<strong>dict</strong>: un diccionario con la estructura descrita anteriormente para las variables presentes en la <em>tbl</em>.</li>
-<li>
-<strong>ignore_case</strong>: un booleano que indica si la función es sencible a mayúsculas y minúsculas.</li>
-</ol>
-<p>A continuación, se muestran ejemplos básicos de uso de esta función. Para fines de familiaridad, llamaremos el conjunto de datos <code>enft</code> que son las siglas de la Encuesta Nacional de Fuerza de Trabajo, haciendo alución a que la forma en la que se utilizan las funciones en estos ejemplos es la forma en la que las utilizará cuando trabaja con estas encuestas.</p>
+<div class="section level3">
+<h3 id="browsing-the-dictionary">Browsing the dictionary<a class="anchor" aria-label="anchor" href="#browsing-the-dictionary"></a>
+</h3>
+<p>Using the <code><a href="../reference/browse_dict.html">browse_dict()</a></code> function, the user will be able to interactively consult the dictionary in order to become familiar with its content.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">enft</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
-  SEXO <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>,
-  EDAD <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">30</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>,
-  GENERO <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>,
-  CASADO <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">5</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">enft</span>
-<span class="co">#&gt;    SEXO EDAD GENERO CASADO</span>
-<span class="co">#&gt; 1     1    1      0      0</span>
-<span class="co">#&gt; 2     1    4      0      0</span>
-<span class="co">#&gt; 3     1    7      0      0</span>
-<span class="co">#&gt; 4     1   10      0      0</span>
-<span class="co">#&gt; 5     1   13      0      0</span>
-<span class="co">#&gt; 6     2   16      1      1</span>
-<span class="co">#&gt; 7     2   19      1      1</span>
-<span class="co">#&gt; 8     2   22      1      1</span>
-<span class="co">#&gt; 9     2   25      1      1</span>
-<span class="co">#&gt; 10    2   28      1      1</span></code></pre></div>
-<p>Nótese en el código más adelante que con solo aplicar la función <code><a href="../reference/set_labels.html">set_labels()</a></code> nuestros datos ahora contienen etiquetas podemos utilizar en nuestro análisis.</p>
+<code class="sourceCode R"><span class="fu"><a href="../reference/browse_dict.html">browse_dict</a></span><span class="op">(</span><span class="va">dict</span><span class="op">)</span></code></pre></div>
+<div id="htmlwidget-27ecb1cc4d8c3e21bfaa" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-27ecb1cc4d8c3e21bfaa">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["GENDER","AGE","SEX","Married"],["Gender of the person","Age of the person","Gender of the person","Indicates whether or not the person is married"],["<div>1: Man<br />2: Woman<br /><\/div>","<div><\/div>","<div>1: Man<br />2: Woman<br /><\/div>","<div>0: No<br />1: Yes<br /><\/div>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>var<\/th>\n      <th>lab<\/th>\n      <th>labs<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"autoWidth":false,"columnDefs":[{"width":"40%","targets":[2,3]},{"targets":2,"className":"dt-top"},{"orderable":false,"targets":0}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="section level2">
+<h2 id="setting-the-labels">Setting the labels<a class="anchor" aria-label="anchor" href="#setting-the-labels"></a>
+</h2>
+<p>The function <code><a href="../reference/set_labels.html">set_labels ()</a></code>, has as main objective to take the labels of variables and values available in a dictionary and apply them to a data table or dataframe.</p>
+<p>The following are basic examples of using this feature. For the sake of familiarity, we will call the data set <code>enft</code> which is the acronym for the National Survey of the Dominican Republic Workforce, hinting that the way in which the functions are used in these examples is the way in which the one you will use when working with these surveys.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">enft</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>
+  GENDER <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>,
+  AGE <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">30</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>,
+  SEX <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span>,
+  MARRIED <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">6</span><span class="op">)</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p>Notice in the code below that just by applying the <code><a href="../reference/set_labels.html">set_labels ()</a></code> function our data now contains labels we can use in our analysis.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">enft</span><span class="op">)</span>
 <span class="co">#&gt; 'data.frame':    10 obs. of  4 variables:</span>
-<span class="co">#&gt;  $ SEXO  : num  1 1 1 1 1 2 2 2 2 2</span>
-<span class="co">#&gt;  $ EDAD  : num  1 4 7 10 13 16 19 22 25 28</span>
-<span class="co">#&gt;  $ GENERO: num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ CASADO: num  0 0 0 0 0 1 1 1 1 1</span>
+<span class="co">#&gt;  $ GENDER : num  1 1 1 1 1 2 2 2 2 2</span>
+<span class="co">#&gt;  $ AGE    : num  1 4 7 10 13 16 19 22 25 28</span>
+<span class="co">#&gt;  $ SEX    : num  1 1 1 1 1 2 2 2 2 2</span>
+<span class="co">#&gt;  $ MARRIED: num  0 0 0 0 1 1 1 1 1 1</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="va">dict</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; 'data.frame':    10 obs. of  4 variables:</span>
-<span class="co">#&gt;  $ SEXO  : num  1 1 1 1 1 2 2 2 2 2</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Sexo de la persona"</span>
+<span class="co">#&gt;  $ GENDER : num  1 1 1 1 1 2 2 2 2 2</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "Gender of the person"</span>
 <span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 1 2</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"</span>
-<span class="co">#&gt;  $ EDAD  : num  1 4 7 10 13 16 19 22 25 28</span>
-<span class="co">#&gt;  $ GENERO: num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ CASADO: num  0 0 0 0 0 1 1 1 1 1</span></code></pre></div>
-<p>Por otro lado, es importante mencionar que tal como se indica en la descripción de los argumentos de la función, es posible asignar las etiquetas de datos a algunas variables específicas.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="va">dict</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SEXO"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; 'data.frame':    10 obs. of  4 variables:</span>
-<span class="co">#&gt;  $ SEXO  : num  1 1 1 1 1 2 2 2 2 2</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Sexo de la persona"</span>
+<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Man" "Woman"</span>
+<span class="co">#&gt;  $ AGE    : num  1 4 7 10 13 16 19 22 25 28</span>
+<span class="co">#&gt;  $ SEX    : num  1 1 1 1 1 2 2 2 2 2</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "Gender of the person"</span>
 <span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 1 2</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"</span>
-<span class="co">#&gt;  $ EDAD  : num  1 4 7 10 13 16 19 22 25 28</span>
-<span class="co">#&gt;  $ GENERO: num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ CASADO: num  0 0 0 0 0 1 1 1 1 1</span></code></pre></div>
-<p>Compare este resultado con el anterior para que pueda notar que contrario al primero, en este caso sólo la variable <code>SEXO</code> contiene etiquetas de datos, tal como se ha indicado en el llamado de la función.</p>
-<p>Si ha prestado suficiente atención al resultado del código, habrá notado que en ningún caso se han asignado las etiquetas de datos a las variables <code>GENERO</code> y <code>CASADO</code>. Esto es así, debido a que R es sensible a mayúsculas y minúsculas, lo que significa que <code>GENERO</code> como está indicado en el conjunto de datos, no es lo mismo que <code>Genero</code> como está indicado en el diccionario. Afortunadamente, el argumento <code>ignore_case</code> como se indicó anteriormente está diseñado especialmente para estos fines. Tal como se muestra a continuación, usando dicho argumento se puede hacer que las etiquetas se asignen también a esta variable.</p>
+<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Man" "Woman"</span>
+<span class="co">#&gt;  $ MARRIED: num  0 0 0 0 1 1 1 1 1 1</span></code></pre></div>
+<p>On the other hand, it is important to mention that as indicated in the description of the function’s arguments, it is possible to assign the data labels to specific variables.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="va">dict</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"GENDER"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; 'data.frame':    10 obs. of  4 variables:</span>
+<span class="co">#&gt;  $ GENDER : num  1 1 1 1 1 2 2 2 2 2</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "Gender of the person"</span>
+<span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 1 2</span>
+<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Man" "Woman"</span>
+<span class="co">#&gt;  $ AGE    : num  1 4 7 10 13 16 19 22 25 28</span>
+<span class="co">#&gt;  $ SEX    : num  1 1 1 1 1 2 2 2 2 2</span>
+<span class="co">#&gt;  $ MARRIED: num  0 0 0 0 1 1 1 1 1 1</span></code></pre></div>
+<p>Compare this result with the previous one to notice that in this case the <code>GENDER</code> variable contains data labels, as indicated in the function call.</p>
+<p>If you have paid enough attention to the output of the code, you will have noticed that the data labels have never been assigned to the <code>MARRIED</code> variable. This is so, because R is case-sensitive, which means that <code>MARRIED</code> as stated in the dataset is not the same as <code>Married</code> as stated in the dictionary. Fortunately, the <code>ignore_case</code> argument of the <code>set_labels</code> function is designed especially for this purpose. As shown below, using this argument you can make labels are assigned to this variable as well.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="va">dict</span>, ignore_case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; 'data.frame':    10 obs. of  4 variables:</span>
-<span class="co">#&gt;  $ SEXO  : num  1 1 1 1 1 2 2 2 2 2</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Sexo de la persona"</span>
+<span class="co">#&gt;  $ GENDER : num  1 1 1 1 1 2 2 2 2 2</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "Gender of the person"</span>
 <span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 1 2</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"</span>
-<span class="co">#&gt;  $ EDAD  : num  1 4 7 10 13 16 19 22 25 28</span>
-<span class="co">#&gt;  $ GENERO: num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Sexo de la persona"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 0 1</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"</span>
-<span class="co">#&gt;  $ CASADO: num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Indica si la persona está o no casada"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 0 1</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "No" "Si"</span></code></pre></div>
-<p>No obstante, dependiendo el tamaño y procedencia de su conjunto de datos, recomendaría ser cauto con esta opción, para evitar obtener resultados inesperados. Una forma en la que recomiendo utilizar esta función se muestra a continuación.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">enft2</span> <span class="op">&lt;-</span> <span class="va">enft</span>
-
-<span class="va">enft2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft2</span>, dict <span class="op">=</span> <span class="va">dict</span><span class="op">)</span>
-
-<span class="va">enft2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft2</span>, dict <span class="op">=</span> <span class="va">dict</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Genero"</span><span class="op">)</span>, ignore_case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">enft2</span><span class="op">)</span>
-<span class="co">#&gt; 'data.frame':    10 obs. of  4 variables:</span>
-<span class="co">#&gt;  $ SEXO  : num  1 1 1 1 1 2 2 2 2 2</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Sexo de la persona"</span>
+<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Man" "Woman"</span>
+<span class="co">#&gt;  $ AGE    : num  1 4 7 10 13 16 19 22 25 28</span>
+<span class="co">#&gt;  $ SEX    : num  1 1 1 1 1 2 2 2 2 2</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "Gender of the person"</span>
 <span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 1 2</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"</span>
-<span class="co">#&gt;  $ EDAD  : num  1 4 7 10 13 16 19 22 25 28</span>
-<span class="co">#&gt;  $ GENERO: num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Sexo de la persona"</span>
+<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Man" "Woman"</span>
+<span class="co">#&gt;  $ MARRIED: num  0 0 0 0 1 1 1 1 1 1</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "Indicates whether or not the person is married"</span>
 <span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 0 1</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"</span>
-<span class="co">#&gt;  $ CASADO: num  0 0 0 0 0 1 1 1 1 1</span></code></pre></div>
-<p>En el primero paso, asigna las etiquetas de datos a las variables que coinciden perfectamente, mientras que en el segundo paso, asigna las etiquetas solo a la variable <code>Genero</code>, a pesar de que el nombre de esta no coincide en el dataframe y el diccionario. De ser necesario pudiera crear un tercer paso en donde se asignen las etiquetas a la variable <code>CASADO</code>.</p>
-<p>Otro detalle, que si eres buen observador habrás notado, es el uso del comodín <code>link::</code> en la definición de las etiquetas de la variable <code>Genero</code>. En este caso, como intuirás al ver las etiquetas que se asignan a esta última variable, lo que se consigue utiliando este comodín es referenciar las etiquetas entre una variable y otra. De esta forma, si creas una variable que que utiliza exactamente las mismas etiquetas que otra, será mucho más fácil agregar la misma al diccionario.</p>
+<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "No" "Yes"</span></code></pre></div>
+<p>However, depending on the size and origin of your data set and dictionary, you should be cautious with this option, to avoid unexpected results. So it might be a good idea to use this argument when specifying target variables.</p>
+<p>Another detail, which if you are a good observer you will have noticed, is the use of the wildcard <code>link::</code> in the definition of the labels of the <code>SEX</code> variable. In this case, as you will guess when you see the labels that are assigned to this last variable, what is achieved by using this wildcard is to reference the labels between one variable and another. This way, if you create a variable that uses exactly the same labels as another, it will be much easier to add the same to the dictionary. Of course, a more plausible option is to create your own custom dictionary of frequently created variables that you can reuse from analysis to analysis.</p>
+<p>Also, if for some reason you want to overwrite some of the predefined tags in the dictionary, you just need to take into account the structure of the dictionary and make the required replacements. For example, if instead of <code>Man / Woman</code> you want to use the abbreviations of these words, you can get it with the code below.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">enft</span><span class="op">$</span><span class="va">mayor_edad</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">enft</span><span class="op">$</span><span class="va">EDAD</span> <span class="op">&gt;</span> <span class="fl">18</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">dict</span><span class="op">[[</span><span class="st">"SEX"</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"M"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"W"</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 
-<span class="va">dict</span><span class="op">[[</span><span class="st">"mayor_edad"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  lab <span class="op">=</span> <span class="st">"Indica si la persona es mayor de 18 años"</span>,
-  labs <span class="op">=</span> <span class="st">"link::Casado"</span>
-<span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="va">dict</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; 'data.frame':    10 obs. of  5 variables:</span>
-<span class="co">#&gt;  $ SEXO      : num  1 1 1 1 1 2 2 2 2 2</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Sexo de la persona"</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="va">dict</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SEX"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; 'data.frame':    10 obs. of  4 variables:</span>
+<span class="co">#&gt;  $ GENDER : num  1 1 1 1 1 2 2 2 2 2</span>
+<span class="co">#&gt;  $ AGE    : num  1 4 7 10 13 16 19 22 25 28</span>
+<span class="co">#&gt;  $ SEX    : num  1 1 1 1 1 2 2 2 2 2</span>
+<span class="co">#&gt;   ..- attr(*, "label")= chr "Gender of the person"</span>
 <span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 1 2</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"</span>
-<span class="co">#&gt;  $ EDAD      : num  1 4 7 10 13 16 19 22 25 28</span>
-<span class="co">#&gt;  $ GENERO    : num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ CASADO    : num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ mayor_edad: num  0 0 0 0 0 0 1 1 1 1</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Indica si la persona es mayor de 18 años"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 0 1</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "No" "Si"</span></code></pre></div>
-<p>Por supuesto, una opción más plausible consiste en crear tu propio diccionario personalizado de las variables que creas con frecuencia y que puedas reutilizar de un análisis a otro.</p>
+<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "M" "W"</span>
+<span class="co">#&gt;  $ MARRIED: num  0 0 0 0 1 1 1 1 1 1</span></code></pre></div>
+<p>##chec Using the labels</p>
+<p>As you may have noticed in all the previous examples, we have used the <code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code> function to show the changes in the data, resulting from the application of the labels. This is so, because even having assigned the labels, your data still looks exactly the same. At this point the <code><a href="../reference/use_labels.html">use_labels()</a></code> function comes into play, which allows us to substitute the values of a variable for the corresponding labels.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">enft3</span> <span class="op">&lt;-</span> <span class="va">enft</span>
-<span class="va">enft3</span><span class="op">$</span><span class="va">edad_par</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">enft3</span><span class="op">$</span><span class="va">EDAD</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html" class="external-link">%%</a></span> <span class="fl">2</span> <span class="op">==</span> <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>
-
-<span class="va">my_dict</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-  edad_par <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-    lab <span class="op">=</span> <span class="st">"Indica si la persona tiene o no una edad par"</span>,
-    labs <span class="op">=</span> <span class="st">"link::mayor_edad"</span>
-  <span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">enft3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft3</span>, dict <span class="op">=</span> <span class="va">dict</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">enft3</span><span class="op">)</span>
-<span class="co">#&gt; 'data.frame':    10 obs. of  6 variables:</span>
-<span class="co">#&gt;  $ SEXO      : num  1 1 1 1 1 2 2 2 2 2</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Sexo de la persona"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 1 2</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"</span>
-<span class="co">#&gt;  $ EDAD      : num  1 4 7 10 13 16 19 22 25 28</span>
-<span class="co">#&gt;  $ GENERO    : num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ CASADO    : num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ mayor_edad: num  0 0 0 0 0 0 1 1 1 1</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Indica si la persona es mayor de 18 años"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 0 1</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "No" "Si"</span>
-<span class="co">#&gt;  $ edad_par  : num  0 1 0 1 0 1 0 1 0 1</span>
-
-<span class="va">enft3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft3</span>, dict <span class="op">=</span> <span class="va">my_dict</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">enft3</span><span class="op">)</span>
-<span class="co">#&gt; 'data.frame':    10 obs. of  6 variables:</span>
-<span class="co">#&gt;  $ SEXO      : num  1 1 1 1 1 2 2 2 2 2</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Sexo de la persona"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 1 2</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"</span>
-<span class="co">#&gt;  $ EDAD      : num  1 4 7 10 13 16 19 22 25 28</span>
-<span class="co">#&gt;  $ GENERO    : num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ CASADO    : num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ mayor_edad: num  0 0 0 0 0 0 1 1 1 1</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Indica si la persona es mayor de 18 años"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 0 1</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "No" "Si"</span>
-<span class="co">#&gt;  $ edad_par  : num  0 1 0 1 0 1 0 1 0 1</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Indica si la persona tiene o no una edad par"</span></code></pre></div>
-<p>Tome en cuenta del resultado anterior que el comodín link no ha funcionado porque la función a la que hace referencia no se encuentra dentro del mismo diccionario. Sin embargo, la etiqueta principal de la variable ha sido asignada con normalidad utilizando su diccionario personalizado. Observe también que, a pesar de que en la viñeta hemos estado llamando la función <code>set_labels</code> en todo momento, esto ha sido solo con fines ilustrativos, por lo que puede notar que las etiquetas agregadas en el paso, con el diccionario original, se mantuvieron cuando se asignaron las etiquetas del diccionario personalizado, gracias a que el dataframe con las etiquetas asignadas se reasigno en la variable <code>enft3</code>, cosa que no habíamos hecho en los casos anteriores. En tal sentido, tenga presente no sobreescribir los nombres de las variables originales, a menos que intencionalmente desee cambiar las estiquetas.</p>
-<p>A continuación se muestra una alternativa con la que podrá utilizar el comodín <code>link::</code> aun dentro de un diccionario personalizado. Nótese además que las etiquetas de datos de la variable <code>edad_par</code> es un link a la variable <code>mayor_edad</code>, que a la vez es un link a la variable <code>Casado</code>, ambas dentro del diccionario principal.</p>
+<code class="sourceCode R"><span class="fu"><a href="../reference/use_labels.html">use_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="va">dict</span>, ignore_case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>
+<span class="co">#&gt;    GENDER AGE SEX MARRIED</span>
+<span class="co">#&gt; 1     Man   1   M      No</span>
+<span class="co">#&gt; 2     Man   4   M      No</span>
+<span class="co">#&gt; 3     Man   7   M      No</span>
+<span class="co">#&gt; 4     Man  10   M      No</span>
+<span class="co">#&gt; 5     Man  13   M     Yes</span>
+<span class="co">#&gt; 6   Woman  16   W     Yes</span>
+<span class="co">#&gt; 7   Woman  19   W     Yes</span>
+<span class="co">#&gt; 8   Woman  22   W     Yes</span>
+<span class="co">#&gt; 9   Woman  25   W     Yes</span>
+<span class="co">#&gt; 10  Woman  28   W     Yes</span></code></pre></div>
+<p>You can use the <code><a href="../reference/set_labels.html">set_labels()</a></code> function to assign the labels at a point in the pipeline, and the <code><a href="../reference/use_labels.html">use_labels()</a></code> function at a later stage to use them. Or you can, as shown below and the easiest way, pass the dictionary directly to the <code><a href="../reference/use_labels.html">use_labels()</a></code> function which will take care of calling the <code><a href="../reference/set_labels.html">set_labels()</a></code> function automatically. Anyway, a more convenient option is to assign / use the labels once a summary table of the data has been generated. What has the advantage of operating on a smaller number of variables.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/append.html" class="external-link">append</a></span><span class="op">(</span><span class="va">dict</span>, <span class="va">my_dict</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; 'data.frame':    10 obs. of  5 variables:</span>
-<span class="co">#&gt;  $ SEXO      : num  1 1 1 1 1 2 2 2 2 2</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Sexo de la persona"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 1 2</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"</span>
-<span class="co">#&gt;  $ EDAD      : num  1 4 7 10 13 16 19 22 25 28</span>
-<span class="co">#&gt;  $ GENERO    : num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ CASADO    : num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ mayor_edad: num  0 0 0 0 0 0 1 1 1 1</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Indica si la persona es mayor de 18 años"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 0 1</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "No" "Si"</span></code></pre></div>
-<p>Además, si por alguna razón quisieras sobreescribir algunas de las etiquetas predefinidas en el diccionario, solo necesitas tener en cuenta la estructura de este y realizar los reemplazos de lugar. Por ejemplo, si en lugar de <code>Hombre/Mujer</code> quisieras utilizar las abreviaturas de estas palabras lo puedes conseguir con el código a continuación.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dict</span><span class="op">[[</span><span class="st">"SEXO"</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"H"</span> <span class="op">=</span> <span class="fl">1</span>, <span class="st">"M"</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="va">dict</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SEXO"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; 'data.frame':    10 obs. of  5 variables:</span>
-<span class="co">#&gt;  $ SEXO      : num  1 1 1 1 1 2 2 2 2 2</span>
-<span class="co">#&gt;   ..- attr(*, "label")= chr "Sexo de la persona"</span>
-<span class="co">#&gt;   ..- attr(*, "labels")= Named num [1:2] 1 2</span>
-<span class="co">#&gt;   .. ..- attr(*, "names")= chr [1:2] "H" "M"</span>
-<span class="co">#&gt;  $ EDAD      : num  1 4 7 10 13 16 19 22 25 28</span>
-<span class="co">#&gt;  $ GENERO    : num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ CASADO    : num  0 0 0 0 0 1 1 1 1 1</span>
-<span class="co">#&gt;  $ mayor_edad: num  0 0 0 0 0 0 1 1 1 1</span></code></pre></div>
-</div>
-<div class="section level1">
-<h1 id="la-función-use_labels">La función use_labels()<a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n-use_labels"></a>
-</h1>
-<p>Todas las funciones endomer son compatibles con el operador <code>%&gt;%</code>, por lo que lo utilizaremos en algunos de los ejemplos a continuación.</p>
-<p>Como habrás notado en todos los ejemplos anteriores nos hemos auxiliados de la función <code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code> para mostrar los cambios en los datos, resultantes de la aplicación de las etiquetas. Esto es así, debido a que aún habiendo asignado las etiquetas, tu datos se siguen viendo exactamente igual.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">enft</span>
-<span class="co">#&gt;    SEXO EDAD GENERO CASADO mayor_edad</span>
-<span class="co">#&gt; 1     1    1      0      0          0</span>
-<span class="co">#&gt; 2     1    4      0      0          0</span>
-<span class="co">#&gt; 3     1    7      0      0          0</span>
-<span class="co">#&gt; 4     1   10      0      0          0</span>
-<span class="co">#&gt; 5     1   13      0      0          0</span>
-<span class="co">#&gt; 6     2   16      1      1          0</span>
-<span class="co">#&gt; 7     2   19      1      1          1</span>
-<span class="co">#&gt; 8     2   22      1      1          1</span>
-<span class="co">#&gt; 9     2   25      1      1          1</span>
-<span class="co">#&gt; 10    2   28      1      1          1</span>
-
-<span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="va">dict</span><span class="op">)</span>
-<span class="co">#&gt;    SEXO EDAD GENERO CASADO mayor_edad</span>
-<span class="co">#&gt; 1     1    1      0      0          0</span>
-<span class="co">#&gt; 2     1    4      0      0          0</span>
-<span class="co">#&gt; 3     1    7      0      0          0</span>
-<span class="co">#&gt; 4     1   10      0      0          0</span>
-<span class="co">#&gt; 5     1   13      0      0          0</span>
-<span class="co">#&gt; 6     2   16      1      1          0</span>
-<span class="co">#&gt; 7     2   19      1      1          1</span>
-<span class="co">#&gt; 8     2   22      1      1          1</span>
-<span class="co">#&gt; 9     2   25      1      1          1</span>
-<span class="co">#&gt; 10    2   28      1      1          1</span></code></pre></div>
-<p>En este punto es donde entra en juego la función <code><a href="../reference/use_labels.html">use_labels()</a></code> que nos permite sustituir los valores por las etiquetas correspondientes.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/use_labels.html">use_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="va">dict</span><span class="op">)</span>
-<span class="co">#&gt;    SEXO EDAD GENERO CASADO mayor_edad</span>
-<span class="co">#&gt; 1     H    1      0      0         No</span>
-<span class="co">#&gt; 2     H    4      0      0         No</span>
-<span class="co">#&gt; 3     H    7      0      0         No</span>
-<span class="co">#&gt; 4     H   10      0      0         No</span>
-<span class="co">#&gt; 5     H   13      0      0         No</span>
-<span class="co">#&gt; 6     M   16      1      1         No</span>
-<span class="co">#&gt; 7     M   19      1      1         Si</span>
-<span class="co">#&gt; 8     M   22      1      1         Si</span>
-<span class="co">#&gt; 9     M   25      1      1         Si</span>
-<span class="co">#&gt; 10    M   28      1      1         Si</span></code></pre></div>
-<p>Nótese que hemos pasado el diccionario a la función <code><a href="../reference/use_labels.html">use_labels()</a></code>, lo que nos permite ahorrar el paso de usar la función <code><a href="../reference/set_labels.html">set_labels()</a></code> directamente. Sin embargo, a pesar de que esto es posible, debe evitarse, debido a que se llamará la función <code><a href="../reference/set_labels.html">set_labels()</a></code> cada vez, lo que puede resultar contraproducente en archivos de datos grandes. Una mejor utilización para esta función se muestra a continuación.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">enft4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span><span class="va">enft</span>, dict <span class="op">=</span> <span class="va">dict</span>, ignore_case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="fu"><a href="../reference/use_labels.html">use_labels</a></span><span class="op">(</span><span class="va">enft4</span>, dict <span class="op">=</span> <span class="va">dict</span><span class="op">)</span>
-<span class="co">#&gt;    SEXO EDAD GENERO CASADO mayor_edad</span>
-<span class="co">#&gt; 1     H    1 Hombre     No         No</span>
-<span class="co">#&gt; 2     H    4 Hombre     No         No</span>
-<span class="co">#&gt; 3     H    7 Hombre     No         No</span>
-<span class="co">#&gt; 4     H   10 Hombre     No         No</span>
-<span class="co">#&gt; 5     H   13 Hombre     No         No</span>
-<span class="co">#&gt; 6     M   16  Mujer     Si         No</span>
-<span class="co">#&gt; 7     M   19  Mujer     Si         Si</span>
-<span class="co">#&gt; 8     M   22  Mujer     Si         Si</span>
-<span class="co">#&gt; 9     M   25  Mujer     Si         Si</span>
-<span class="co">#&gt; 10    M   28  Mujer     Si         Si</span></code></pre></div>
-<p>O mejor aún, cada vez que generas una tabla resumen de tus datos. Lo que tiene la ventaja de operar sobre una menor cantidad de variables.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">enft4</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">GENERO</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/use_labels.html">use_labels</a></span><span class="op">(</span>dict <span class="op">=</span> <span class="va">dict</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 2</span></span>
-<span class="co">#&gt; <span style="color: #949494;"># Groups:   GENERO [2]</span></span>
-<span class="co">#&gt;   GENERO     n</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Hombre     5</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Mujer      5</span></code></pre></div>
-<p>En este caso, sería totalmente factible asignar las etiquetas en el momento, sobretodo debido a que se estarían creando variables nuevas en todo momento. La única observación pertinente en este caso sería la de no sobre escribir los nombres de las variables de forma que las etiquetas sigan funcionando.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">enft</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span>
-    Sexo <span class="op">=</span> <span class="va">SEXO</span>, 
-    estado_civil <span class="op">=</span> <span class="va">CASADO</span>
-    <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+    gender <span class="op">=</span> <span class="va">GENDER</span>,
+    united <span class="op">=</span> <span class="va">MARRIED</span>
+  <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span>dict <span class="op">=</span> <span class="va">dict</span>, ignore_case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/use_labels.html">use_labels</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 3</span></span>
-<span class="co">#&gt; <span style="color: #949494;"># Groups:   Sexo, estado_civil [2]</span></span>
-<span class="co">#&gt;   Sexo  estado_civil     n</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> H                0     5</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> M                1     5</span></code></pre></div>
-<p>Como se puede observar en el ejemplo anterior, a pesar de que he cambiado el nombre a la variable <code>SEXO</code>, con solo asignar el argumento <code>ignore_case = TRUE</code> la función fue capaz de asignar las etiquetas de datos. Mientras que en el caso de la variable <code>CASADO</code> he cambiado el nombre a uno que no se encuentra presente en el diccionario, por lo que la función no fue capaz de encontrar las etiquetas correspondientes. Esto se pudo haber conseguido de la siguiente manera, por ejemplo:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># Groups:   gender, united [3]</span></span>
+<span class="co">#&gt;   gender united     n</span>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Man         0     4</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Man         1     1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Woman       1     5</span></code></pre></div>
+<p>As can be seen in the previous example, even though the <code>GENDER</code> variable has been renamed, just by assigning the <code>ignore_case = TRUE</code> argument, the function was able to assign the data labels. While in the case of the variable <code>MARRIED</code> the name has been changed to one that is not present in the dictionary, so the function was not able to find the corresponding labels. This could have been achieved in the following way, for example:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">enft</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span>
-    Sexo <span class="op">=</span> <span class="va">SEXO</span>, 
-    <span class="va">CASADO</span>
+    gender <span class="op">=</span> <span class="va">GENDER</span>, 
+    married <span class="op">=</span> <span class="va">MARRIED</span>
     <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span>dict <span class="op">=</span> <span class="va">dict</span>, ignore_case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/use_labels.html">use_labels</a></span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="st">"estado_civil"</span> <span class="op">=</span> <span class="st">"CASADO"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 3</span></span>
-<span class="co">#&gt; <span style="color: #949494;"># Groups:   Sexo, estado_civil [2]</span></span>
-<span class="co">#&gt;   Sexo  estado_civil     n</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> H     No               5</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> M     Si               5</span></code></pre></div>
-<p>Al igual que en el caso anterior en la función <code><a href="../reference/use_labels.html">use_labels()</a></code> es posible especificar las variables en las que se quiere utilizar las etiquetas.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="va">enft</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/use_labels.html">use_labels</a></span><span class="op">(</span>dict <span class="op">=</span> <span class="va">dict</span>, ignore_case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="st">"united"</span> <span class="op">=</span> <span class="st">"married"</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># Groups:   gender, united [3]</span></span>
+<span class="co">#&gt;   gender united     n</span>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Man    No         4</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Man    Yes        1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Woman  Yes        5</span></code></pre></div>
+<p>Furthermore, regardless of which variables have assigned labels, it is possible to specify which of them you want to use. This is possible using the <code>vars</code> argument. Note also that the arguments can be combined, arriving at the desired result.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">enft</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span>
-    Sexo <span class="op">=</span> <span class="va">SEXO</span>, 
-    <span class="va">CASADO</span>
+    gender <span class="op">=</span> <span class="va">GENDER</span>, 
+    married <span class="op">=</span> <span class="va">MARRIED</span>
     <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/set_labels.html">set_labels</a></span><span class="op">(</span>dict <span class="op">=</span> <span class="va">dict</span>, ignore_case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="../reference/use_labels.html">use_labels</a></span><span class="op">(</span><span class="cn">NULL</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sexo"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="st">"estado_civil"</span> <span class="op">=</span> <span class="st">"CASADO"</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/use_labels.html">use_labels</a></span><span class="op">(</span>dict <span class="op">=</span> <span class="va">dict</span>, vars <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gender"</span><span class="op">)</span>, ignore_case <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html" class="external-link">rename</a></span><span class="op">(</span><span class="st">"united"</span> <span class="op">=</span> <span class="st">"married"</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># Groups:   gender, united [3]</span></span>
+<span class="co">#&gt;   gender united     n</span>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Man         0     4</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Man         1     1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Woman       1     5</span></code></pre></div>
+<p>When variables contain values that are not in the dictionary, <code><a href="../reference/use_labels.html">use_labels()</a></code> by <strong>default</strong> prevents labels from being assigned to these variables and prints a warning in the console indicating the variables that could not be labeled. You can assign the argument <code>use_labels(..., check = FALSE)</code> so that the labels are used regardless of those values that are not present in the dictionary, which will be converted to <code>NA</code>. In this sense, the best option is to add to the dictionary all the values that the variable has to take. If you just want to avoid the console warning, use the <code>vars</code> argument to specify the variables to be labelled, excluding the conflicting variables.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">enft</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span>
+    <span class="va">GENDER</span>, 
+    SEX <span class="op">=</span> <span class="va">SEX</span> <span class="op">+</span> <span class="fl">1</span>
+    <span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="../reference/use_labels.html">use_labels</a></span><span class="op">(</span>dict <span class="op">=</span> <span class="va">dict</span><span class="op">)</span>
+<span class="co">#&gt; Warning in use_labels(., dict = dict): The following (1) variables contain values</span>
+<span class="co">#&gt;       that are not in the dictionary and were not labeled: </span>
+<span class="co">#&gt; SEX.</span>
+<span class="co">#&gt;       Please see "https://adatar-do.github.io/labeler/articles/labeler.html" for more details.</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 2 × 3</span></span>
-<span class="co">#&gt; <span style="color: #949494;"># Groups:   Sexo, estado_civil [2]</span></span>
-<span class="co">#&gt;   Sexo  estado_civil     n</span>
-<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> H                0     5</span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> M                1     5</span></code></pre></div>
-</div>
-<div class="section level1">
-<h1 id="la-función-browse_dict">La función browse_dict()<a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n-browse_dict"></a>
-</h1>
-<p>Además de todo esto, endomer ofrece la función <code><a href="../reference/browse_dict.html">browse_dict()</a></code> que tal como se muestra a continuación permite visualizar el diccionario de forma interactiva.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/browse_dict.html">browse_dict</a></span><span class="op">(</span><span class="va">dict</span><span class="op">)</span></code></pre></div>
-<div id="htmlwidget-911fc2da80e7b8b4dc7a" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-911fc2da80e7b8b4dc7a">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["SEXO","EDAD","Genero","Casado","mayor_edad"],["Sexo de la persona","Edad de la persona","Sexo de la persona","Indica si la persona está o no casada","Indica si la persona es mayor de 18 años"],["<div>1: H<br />2: M<br /><\/div>","<div><\/div>","<div>0: Hombre<br />1: Mujer<br /><\/div>","<div>0: No<br />1: Si<br /><\/div>","<div>0: No<br />1: Si<br /><\/div>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>var<\/th>\n      <th>lab<\/th>\n      <th>labs<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"autoWidth":false,"columnDefs":[{"width":"40%","targets":[2,3]},{"targets":2,"className":"dt-top"},{"orderable":false,"targets":0}],"order":[],"orderClasses":false}},"evals":[],"jsHooks":[]}</script><blockquote>
-<p>Cada uno de los paquetes en endomer cuenta con funciones especificas que asignan los diccionarios de forma automática.</p>
-</blockquote>
-</div>
-<div class="footnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Esto está sujeto a cambio, por favor consulta la documentación de la función para una descripción más precisa y actualizada.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
-</div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
+<span class="co">#&gt; <span style="color: #949494;"># Groups:   GENDER, SEX [2]</span></span>
+<span class="co">#&gt;   GENDER   SEX     n</span>
+<span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Man        2     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Woman      3     5</span></code></pre></div>
 </div>
 
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
+    <footer><div class="pkgdown-footer-left">
   <p></p>
 <p>Developed by Daniel E. de la Rosa.</p>
 </div>
 
-<div class="pkgdown">
+<div class="pkgdown-footer-right">
   <p></p>
 <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
-
 
   
 
