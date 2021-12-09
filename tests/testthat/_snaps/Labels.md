@@ -1,47 +1,6 @@
 # labels
 
     Code
-      parse_dict(dict)
-    Output
-      $SEXO
-      $SEXO$lab
-      [1] "Sexo de la persona"
-      
-      $SEXO$labs
-      Hombre  Mujer 
-           1      2 
-      
-      
-      $ESTADO
-      $ESTADO$lab
-      [1] "Estado marital de la persona"
-      
-      $ESTADO$labs
-      Soltero  Casado   Viudo 
-            1       2       3 
-      
-      
-      $ALTURA
-      $ALTURA$lab
-      [1] "Altura de la persona"
-      
-      $ALTURA$labs
-       Baja Media  Alta 
-          1     2     3 
-      
-      
-      $Sexo2
-      $Sexo2$lab
-      [1] "Palabras cón caracteres nó ASCII"
-      
-      $Sexo2$labs
-      [1] "link::SEXO"
-      
-      
-
----
-
-    Code
       str(set_labels(datos, dict = dict))
     Output
       'data.frame':	10 obs. of  5 variables:
@@ -50,7 +9,7 @@
         ..- attr(*, "labels")= Named num [1:2] 1 2
         .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"
        $ Sexo2 : num  1 1 1 1 1 2 2 2 2 2
-        ..- attr(*, "label")= chr "Palabras cÃ³n caracteres nÃ³ ASCII"
+        ..- attr(*, "label")= chr "Sexo de la persona"
         ..- attr(*, "labels")= Named num [1:2] 1 2
         .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"
        $ Sexo3 : num  1 1 1 1 1 2 2 2 2 2
@@ -76,7 +35,7 @@
         ..- attr(*, "labels")= Named num [1:2] 1 2
         .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"
        $ Sexo2 : num  1 1 1 1 1 2 2 2 2 2
-        ..- attr(*, "label")= chr "Palabras cÃ³n caracteres nÃ³ ASCII"
+        ..- attr(*, "label")= chr "Sexo de la persona"
         ..- attr(*, "labels")= Named num [1:2] 1 2
         .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"
        $ Sexo3 : num  1 1 1 1 1 2 2 2 2 2
@@ -112,7 +71,7 @@
         ..- attr(*, "labels")= Named num [1:2] 1 2
         .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"
        $ Sexo2 : num  1 1 1 1 1 2 2 2 2 2
-        ..- attr(*, "label")= chr "Palabras cÃ³n caracteres nÃ³ ASCII"
+        ..- attr(*, "label")= chr "Sexo de la persona"
         ..- attr(*, "labels")= Named num [1:2] 1 2
         .. ..- attr(*, "names")= chr [1:2] "Hombre" "Mujer"
        $ Sexo3 : num  1 1 1 1 1 2 2 2 2 2
@@ -236,6 +195,28 @@
       8   Mujer  Mujer     2  Casado      3
       9   Mujer  Mujer     2   Viudo      4
       10  Mujer  Mujer     2   Viudo      4
+
+---
+
+    Code
+      use_labels(dplyr::mutate(datos, Sexo2 = Sexo2 + 1), dict = dict)
+    Warning <simpleWarning>
+      The following (1) variables contain values
+            that are not in the dictionary and were not labeled: 
+      Sexo2.
+            Please see "https://adatar-do.github.io/labeler/articles/labeler.html" for more details.
+    Output
+           SEXO Sexo2 Sexo3  ESTADO Altura
+      1  Hombre     2     1 Soltero      2
+      2  Hombre     2     1 Soltero      2
+      3  Hombre     2     1 Soltero      2
+      4  Hombre     2     1 Soltero      2
+      5  Hombre     2     1  Casado      3
+      6   Mujer     3     2  Casado      3
+      7   Mujer     3     2  Casado      3
+      8   Mujer     3     2  Casado      3
+      9   Mujer     3     2   Viudo      4
+      10  Mujer     3     2   Viudo      4
 
 ---
 
