@@ -39,7 +39,13 @@ test_that("labels", {
   expect_null(set_labels(NULL, dict = dict, vars = c("SEXO")))
   expect_snapshot(use_labels(set_labels(datos, dict = dict, ignore_case = T), NULL))
 
+  datos <- dplyr::mutate(datos, Altura = Altura + 1)
+  expect_snapshot(use_labels(datos, dict = dict, ignore_case = T))
+
   expect_null(set_labels(NULL, NULL, NULL))
   dict[["Sexo3"]] <- list(lab = 5, labs = c(1, 2))
+  dict[["Sexo4"]] <- list(lab = "link::Sexo3", labs = c(1, 2))
   expect_snapshot(use_labels(datos, dict = dict))
+
+
 })

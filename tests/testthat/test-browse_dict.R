@@ -16,5 +16,8 @@ test_that("browse_dict and labels", {
   )
   expect_snapshot(
     browse_dict(dict, testing = TRUE)
-    )
+  )
+  expect_snapshot(
+    browse_dict(dict)
+  )
 })
