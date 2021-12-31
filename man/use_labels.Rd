@@ -5,7 +5,7 @@
 \title{Use the data labels of a variable instead of its values
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}}
 \usage{
-use_labels(tbl, dict, vars = NULL, ignore_case = F, check = TRUE)
+use_labels(tbl, dict, vars = NULL, ignore_case = F, check = TRUE, warn = TRUE)
 }
 \arguments{
 \item{tbl}{\link{data.frame}: Data.frame with the data}
@@ -19,6 +19,8 @@ have not yet been assigned. See \code{Details}}
 
 \item{check}{\link{logical}: If TRUE (default), the function will check if values
 present in variable are valid data labels in dictionary.}
+
+\item{warn}{\link{logical}: Indicate if warnings should be shown.}
 }
 \value{
 The data supplied in the \code{tbl} argument, but instead of values

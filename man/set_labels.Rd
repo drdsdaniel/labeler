@@ -5,7 +5,7 @@
 \title{Assign data labels to specified variables
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}}
 \usage{
-set_labels(tbl, dict, vars = NULL, ignore_case = FALSE)
+set_labels(tbl, dict, vars = NULL, ignore_case = FALSE, warn = TRUE)
 }
 \arguments{
 \item{tbl}{\link{data.frame}: Data.frame with the data}
@@ -15,6 +15,8 @@ set_labels(tbl, dict, vars = NULL, ignore_case = FALSE)
 \item{vars}{\link{character}: If specified, only labels are assigned to those variables}
 
 \item{ignore_case}{\link{logical}: Indicate if case sensitive should be ignored.}
+
+\item{warn}{\link{logical}: Indicate if warnings should be shown.}
 }
 \value{
 The data entered in the \code{tbl} argument but with data labels

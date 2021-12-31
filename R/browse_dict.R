@@ -30,15 +30,29 @@
 #' browse_dict(dict)
 #' }
 browse_dict <- function(dict, ...) {
-  datos <- data.frame(var = character(), lab = character(), labs = character())
+  datos <- data.frame(
+    var = character(),
+    lab = character(),
+    labs = character(),
+    warn = character()
+  )
+  enc <- dict[["encoding"]]
+  if(is.null(enc)){
+    enc <- ""
+  }
+  dict <- dict[names(dict) != "encoding"]
   for (name in names(dict)) {
     datos[nrow(datos) + 1, "var"] <- name
     lab <- dict[[name]]$lab
     lab <- validateLab(lab, dict)
-    datos[nrow(datos), "lab"] <- decode_lab(lab)
+    datos[nrow(datos), "lab"] <- decode_lab(lab, enc)
+    warn <- dict[[name]]$warn
+    if(!is.null(warn)) {
+      datos[nrow(datos), "warn"] <- decode_lab(warn, enc)
+    }
     labs <- dict[[name]]$labs
     labs <- validateLabs(labs, dict)
-    labs <- decode_labs(labs)
+    labs <- decode_labs(labs, enc)
     labs2 <- "<div>"
     for (lab in seq_along(labs)) {
       labs2 <- paste0(

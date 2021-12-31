@@ -44,9 +44,15 @@ test_that("labels", {
 
   expect_snapshot(use_labels(dplyr::mutate(datos, Sexo2 = Sexo2 + 1), dict = dict))
   expect_null(set_labels(NULL, NULL, NULL))
+  expect_null(use_labels(NULL, NULL, NULL))
   dict[["Sexo3"]] <- list(lab = 5, labs = c(1, 2))
   dict[["Sexo4"]] <- list(lab = "link::Sexo3", labs = c(1, 2))
   expect_snapshot(use_labels(datos, dict = dict))
+
+  dict[["encoding"]] <- "latin1"
+  dict[["Sexo3"]][["warn"]] <- "Warning"
+  expect_snapshot(use_labels(datos, dict = dict))
+  expect_snapshot(use_labels(datos, dict = dict, warn = FALSE))
 
 
 })

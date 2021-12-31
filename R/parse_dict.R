@@ -18,6 +18,7 @@
 #'  }
 parse_dict <- function(dict) {
     for (var in names(dict)) {
+      if(!(var %in% c("encoding"))){
         lab <- readr::parse_character(dict[[var]][["lab"]])
         dict[[var]][["lab"]] <- lab
         labs <- names(dict[[var]][["labs"]])
@@ -29,6 +30,12 @@ parse_dict <- function(dict) {
             }
             names(dict[[var]][["labs"]]) <- labs
         }
+        warn <- dict[[var]][["warn"]]
+        if(!is.null(warn)) {
+            warn <- readr::parse_character(warn)
+            dict[[var]][["warn"]] <- warn
+        }
+      }
     }
     return(dict)
 }
