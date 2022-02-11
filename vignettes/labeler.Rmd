@@ -23,11 +23,9 @@ Historically, software like SPSS, SAS or Stata have worked with labelled data. T
 
 Being able to work with labelled data is one of the features that R users who come from the previously mentioned systems miss the most. Especially when processing survey and census data.
 
-In the R ecosystem there are 3 fundamental packages for working with labelled data `haven`, `labelled` y `sjlabelled`[^1].
+In the R ecosystem there are 3 fundamental packages for working with labelled data `haven`, `labelled` y `sjlabelled`[^1]. However, these packages work in a similar way. They all expect you to load previously labelled data or assign the labels manually for each of the variables.
 
 [^1]: See <https://www.pipinghotdata.com/posts/2020-12-23-leveraging-labelled-data-in-r/>
-
-However, these packages work in a similar way. They all expect you to load previously labelled data or assign the labels manually for each of the variables.
 
 If you work with a dozen variables, this scheme is possible. However, as the number of variables grows, this scheme becomes difficult to handle. It should even be noted that some operations in R remove most of the attributes on objects, so perhaps some labels may even have to be assigned repeatedly.
 
@@ -42,6 +40,7 @@ The `dictionary` object consists of a list that contains each of the variables t
 
 1. **lab**: A character string that describes the variable.
 2. **labs**: A named vector of the possible values that the variable takes.
+3. **warn** (optional): A character string that describes the warning that should be shown when the variable is labeled.
 
 In this sense, a valid dictionary in `labeler` can be built and is displayed as follows:
 
@@ -66,6 +65,10 @@ dict <- list(
 ```
 
 Following these basic criteria, you can create a custom dictionary, either by building it from scratch, or by adding the necessary labels for the variables that you create through your analysis.
+
+### Building a dictionary, ¿automatically?
+
+If you are working with a labelled dataset, you can use the `labeler` package to automatically build a dictionary. This is done by using the `labeler::get_dictionary` function. This function takes as input the labeled dataset, and returns a dictionary in the structure described above.
 
 ### Parsing the dictionary
 
@@ -168,7 +171,7 @@ mydata %>%
   dplyr::rename("united" = "married")
 ```
 
-## Warnings
+## Checking labels
 
 When variables contain values that are not in the dictionary, `use_labels()` by **default** prevents labels from being assigned to these variables and prints a warning in the console indicating the variables that could not be labeled. You can assign the argument `use_labels(..., check = FALSE)` so that the labels are used regardless of those values that are not present in the dictionary, which will be converted to `NA`. In this sense, the best option is to add to the dictionary all the values that the variable has to take. If you just want to avoid the console warning, use the `vars` argument to specify the variables to be labelled, excluding the conflicting variables.
 ```{r}

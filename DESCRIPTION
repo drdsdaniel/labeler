@@ -1,6 +1,6 @@
 Package: labeler
 Title: Easy to use and share data labels in R
-Version: 0.5.0
+Version: 0.6.0
 Authors@R:
     c(person(given = "Daniel E.",
            family = "de la Rosa",
@@ -25,7 +25,8 @@ Imports:
     haven,
     readr,
     magrittr,
-    dplyr
+    dplyr,
+    labelled
 Suggests: 
     testthat,
     covr,

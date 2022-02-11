@@ -270,7 +270,7 @@ use_labels <- function(tbl,
     if (warn) {
       if (length(nulas) > 0) {
         warning(paste0("The following (", length(nulas), ") variables contain values that are not in the dictionary and were not labeled: \n     ", paste(nulas, collapse = ", "), '.
-  Please see "https://adatar-do.github.io/labeler/articles/labeler.html#warnings" for more details.'))
+  Please see "https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels" for more details.'))
       }
     }
     tbl

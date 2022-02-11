@@ -181,7 +181,7 @@
     Warning <simpleWarning>
       The following (1) variables contain values that are not in the dictionary and were not labeled: 
            Altura.
-        Please see "https://adatar-do.github.io/labeler/articles/labeler.html#warnings" for more details.
+        Please see "https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels" for more details.
     Output
            SEXO  Sexo2 Sexo3  ESTADO Altura
       1  Hombre Hombre     1 Soltero      2
@@ -202,7 +202,7 @@
     Warning <simpleWarning>
       The following (1) variables contain values that are not in the dictionary and were not labeled: 
            Sexo2.
-        Please see "https://adatar-do.github.io/labeler/articles/labeler.html#warnings" for more details.
+        Please see "https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels" for more details.
     Output
            SEXO Sexo2 Sexo3  ESTADO Altura
       1  Hombre     2     1 Soltero      2
