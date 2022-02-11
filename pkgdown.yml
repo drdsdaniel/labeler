@@ -1,7 +1,10 @@
 pandoc: 2.7.3
-pkgdown: 2.0.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   labeler: labeler.html
-last_built: 2021-12-09T14:21Z
+last_built: 2022-02-11T01:56Z
+urls:
+  reference: https://adatar-do.github.io/labeler/reference
+  article: https://adatar-do.github.io/labeler/articles
 
