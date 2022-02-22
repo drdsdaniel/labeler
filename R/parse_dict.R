@@ -19,8 +19,8 @@
 parse_dict <- function(dict) {
     for (var in names(dict)) {
       if(!(var %in% c("encoding"))){
-        lab <- readr::parse_character(dict[[var]][["lab"]])
-        dict[[var]][["lab"]] <- lab
+        lab <- dict[[var]][["lab"]]
+        dict[[var]][["lab"]] <- ifelse(any(is.null(lab), lab == ""), "", readr::parse_character(lab))
         labs <- names(dict[[var]][["labs"]])
         if (!is.null(labs)) {
             if (length(labs) > 1) {

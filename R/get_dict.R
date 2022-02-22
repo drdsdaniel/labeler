@@ -19,11 +19,15 @@ get_dict <- function(tbl){
     lab <- dict0[["label"]][[row]]
     labs <- dict0[["value_labels"]][[row]]
     dict[[variable]] <- list()
+    if(!all(is.na(labs))){
+      dict[[variable]][["labs"]] <- labs
+      dict[[variable]][["lab"]] <- ""
+    }
     if(!is.na(lab)){
       dict[[variable]][["lab"]] <- lab
     }
-    if(!all(is.na(labs))){
-      dict[[variable]][["labs"]] <- labs
+    if(length(dict[[variable]]) == 0){
+      dict[[variable]] <- NULL
     }
   }
   dict

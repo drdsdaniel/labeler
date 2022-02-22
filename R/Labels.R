@@ -62,7 +62,7 @@ set_labels <- function(tbl, dict, vars = NULL, ignore_case = FALSE, warn = TRUE)
         }
       )
       if (!is.null(lab)) {
-        lab <- decode_lab(lab, enc)
+        #lab <- decode_lab(lab, enc)
         lab <- validateLab(lab, dict)
       }
       tryCatch(
@@ -75,7 +75,7 @@ set_labels <- function(tbl, dict, vars = NULL, ignore_case = FALSE, warn = TRUE)
       )
       if (!is.null(labs)) {
         labs <- validateLabs(labs, dict)
-        labs <- decode_labs(labs, enc)
+        #labs <- decode_labs(labs, enc)
         name <- names(tbl)[tolower(names(tbl)) == tolower(name)]
         tbl <- labellize(tbl, name, lab, labs)
       }
@@ -145,7 +145,7 @@ validateLabs <- function(labs, dict) {
 
 decode_lab <- function(lab, enc) {
   if (!is.null(lab)) {
-    lab <- iconv(lab, to = enc)
+    lab <- iconv(lab)
   }
   lab
 }
@@ -154,7 +154,7 @@ decode_lab <- function(lab, enc) {
 decode_labs <- function(labs, enc) {
   if (!is.null(labs)) {
     for (lab in seq_along(names(labs))) {
-      names(labs)[lab] <- iconv(names(labs)[lab], to = enc)
+      names(labs)[lab] <- iconv(names(labs)[lab])
     }
   }
   labs
