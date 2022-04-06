@@ -41,7 +41,7 @@ set_labels <- function(tbl, dict, vars = NULL, ignore_case = FALSE, warn = TRUE)
     names <- vars
   } else if (!is.null(tbl)) {
     if (!("data.frame" %in% class(tbl))) { # Validar las clases de tbl admitidas
-      warning("Operation not guaranteed for this class of objects.
+      cli::cli_alert_info("Operation not guaranteed for this class of objects.
   Pass an object of type data.frame to ensure operation.")
     }
     names <- names(tbl)
@@ -62,7 +62,7 @@ set_labels <- function(tbl, dict, vars = NULL, ignore_case = FALSE, warn = TRUE)
         }
       )
       if (!is.null(lab)) {
-        #lab <- decode_lab(lab, enc)
+        lab <- decode_lab(lab, enc)
         lab <- validateLab(lab, dict)
       }
       tryCatch(
@@ -75,14 +75,14 @@ set_labels <- function(tbl, dict, vars = NULL, ignore_case = FALSE, warn = TRUE)
       )
       if (!is.null(labs)) {
         labs <- validateLabs(labs, dict)
-        #labs <- decode_labs(labs, enc)
+        labs <- decode_labs(labs, enc)
         name <- names(tbl)[tolower(names(tbl)) == tolower(name)]
         tbl <- labellize(tbl, name, lab, labs)
       }
       if (warn) {
         tryCatch({
           if (!is.null(dict[[name]][["warn"]])) {
-            warning(paste0(name, ": ", dict[[name]][["warn"]]))
+            cli::cli_alert_warning(paste0(name, ": ", dict[[name]][["warn"]]))
           }
         }, error = function(e){
 
@@ -145,7 +145,7 @@ validateLabs <- function(labs, dict) {
 
 decode_lab <- function(lab, enc) {
   if (!is.null(lab)) {
-    lab <- iconv(lab)
+    lab <- iconv(lab, to = "utf8")
   }
   lab
 }
@@ -154,7 +154,7 @@ decode_lab <- function(lab, enc) {
 decode_labs <- function(labs, enc) {
   if (!is.null(labs)) {
     for (lab in seq_along(names(labs))) {
-      names(labs)[lab] <- iconv(names(labs)[lab])
+      names(labs)[lab] <- iconv(names(labs)[lab], to = "utf8")
     }
   }
   labs
@@ -247,30 +247,33 @@ use_labels <- function(tbl,
   if (all(!is.null(tbl), !is.na(vars))) {
     nulas <- character()
     for (name in names) {
-      var <- tbl[[name]] # tbl[, name]
+      variable <- tbl[[name]] # tbl[, name]
       tryCatch(
         {
-          var2 <- sjlabelled::as_label(var)
+          var2 <- sjlabelled::as_label(variable)
           if (check) {
-            unicos <- unique(var)
+            unicos <- unique(variable)
             unicos <- unicos[!is.na(unicos)]
-            if (sum(is.na(var)) != sum(is.na(var2))) {
+            if (sum(is.na(variable)) != sum(is.na(var2))) {
               nulas <- c(nulas, name)
-              var2 <- var
+              var2 <- variable
             }
           }
-          var <- var2
+          variable <- var2
         },
         error = function(e) {
 
         }
       )
-      tbl[[name]] <- var # tbl[, name] <- var
+      tbl[[name]] <- variable # tbl[, name] <- variable
     }
     if (warn) {
       if (length(nulas) > 0) {
-        warning(paste0("The following (", length(nulas), ") variables contain values that are not in the dictionary and were not labeled: \n     ", paste(nulas, collapse = ", "), '.
-  Please see "https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels" for more details.'))
+        lnulas <- length(nulas)
+        names(nulas) <- rep("*", length(nulas))
+        cli::cli_text("The following ({lnulas}) variable{?s} w{?as/ere} not labeled since {?it/they} contain values not present in the dictionary:")
+        cli::cli_bullets(nulas)
+        cli::cli_text("Please visit {.url {'https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels'}} for more details.")
       }
     }
     tbl

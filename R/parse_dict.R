@@ -20,19 +20,19 @@ parse_dict <- function(dict) {
     for (var in names(dict)) {
       if(!(var %in% c("encoding"))){
         lab <- dict[[var]][["lab"]]
-        dict[[var]][["lab"]] <- ifelse(any(is.null(lab), lab == ""), "", readr::parse_character(lab))
+        dict[[var]][["lab"]] <- ifelse(any(is.null(lab), lab == ""), "", iconv(lab, to = "utf8")) #readr::parse_character(lab)
         labs <- names(dict[[var]][["labs"]])
         if (!is.null(labs)) {
             if (length(labs) > 1) {
                 for (lab in seq_along(labs)) {
-                    labs[[lab]] <- readr::parse_character(labs[[lab]])
+                    labs[[lab]] <- iconv(labs[[lab]], to = "utf8")# readr::parse_character(labs[[lab]])
                 }
             }
             names(dict[[var]][["labs"]]) <- labs
         }
         warn <- dict[[var]][["warn"]]
         if(!is.null(warn)) {
-            warn <- readr::parse_character(warn)
+            warn <- iconv(warn, to = "utf8") # readr::parse_character(warn)
             dict[[var]][["warn"]] <- warn
         }
       }
