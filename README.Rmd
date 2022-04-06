@@ -61,6 +61,6 @@ Please note that the `labeler` project is released with a [Contributor Code of C
 <hr/>
 
 ```{r echo=FALSE}
-Dmisc::big_button(href = "./articles/labeler.html")
+Dmisc::big_button(text = "Get started!", href = "./articles/labeler.html")
 ```
 

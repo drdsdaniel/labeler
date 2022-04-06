@@ -58,20 +58,17 @@ By contributing to this project, you agree to abide by its terms.
 
 <hr/>
 
-<a href="./articles/labeler.html"><button type="button"
-style = "
-    border: 1px solid transparent;
-    background-color: #00a65a;
-    display: block;
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.3333333;
-    color: #fff;
-    cursor: pointer;
-    margin-left: 35%;
-    margin-top: 10px;
-    font-weight: 900;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;">
-    Get started</button></a>
+<a href="./articles/labeler.html">
+  <svg width="50%" height="30" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: auto;">
+  <linearGradient id="a" x2="0" y2="100%">
+    <stop offset="0" stop-color="#bbb" stop-opacity="0.2"/>
+  <stop offset="1" stop-opacity="0.1"/>
+    </linearGradient>
+    <rect rx="4" x="0" width="50%" height="30" fill="#555"/>
+    <rect rx="4" x="0" width="50%" height="30" fill="#00a65a"/>
+    <rect rx="4" width="50%" height="30" fill="url(#a)"/>
+    <g fill="#fff" text-anchor="middle" font-size="18">
+    <text x="25%" y="21">Get started!</text>
+    </g>
+    </svg>
+    </a>
