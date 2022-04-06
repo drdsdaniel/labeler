@@ -179,12 +179,9 @@
     Code
       use_labels(datos, dict = dict, ignore_case = T)
     Message <cliMessage>
-      The following (1) variable was not labeled since it contain values not present
-      in the dictionary:
+      The following (1) variable was not labeled since it contain values not present in the dictionary:
       * Altura
-      Please visit
-      <https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels> for
-      more details.
+      Please visit <https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels> for more details.
     Output
            SEXO  Sexo2 Sexo3  ESTADO Altura
       1  Hombre Hombre     1 Soltero      2
@@ -203,12 +200,9 @@
     Code
       use_labels(dplyr::mutate(datos, Sexo2 = Sexo2 + 1), dict = dict)
     Message <cliMessage>
-      The following (1) variable was not labeled since it contain values not present
-      in the dictionary:
+      The following (1) variable was not labeled since it contain values not present in the dictionary:
       * Sexo2
-      Please visit
-      <https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels> for
-      more details.
+      Please visit <https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels> for more details.
     Output
            SEXO Sexo2 Sexo3  ESTADO Altura
       1  Hombre     2     1 Soltero      2
