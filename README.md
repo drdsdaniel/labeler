@@ -19,7 +19,7 @@ status](https://www.r-pkg.org/badges/version/labeler)](https://CRAN.R-project.or
 <!-- badges: end -->
 
 This package contains functions to assign and use data labels in an easy
-and efficient way. With an easy-to-share structure.
+and efficient way. With an easy to share structure.
 
 ## Installation
 

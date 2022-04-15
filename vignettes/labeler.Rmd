@@ -74,6 +74,8 @@ If you are working with a labelled dataset, you can use the `labeler` package to
 
 Working with non-ASCII characters in R is a tedious task. `labeler` offers a way to work with non-ASCII characters in dictionaries. For these purposes there is the `parse_dict()` function that allows parsing a dictionary to replace these characters. Note that this process is necessary only if the dictionary is intended to be saved as a valid R object, as part of a package for example. The other functions in `labeler` are designed to reverse this automatic forming process.
 
+> parse_dict(.decode = TRUE) para cuando el diccionario contiene letras no ASCII.
+
 ### Browsing the dictionary
 
 Using the `browse_dict()` function, the user will be able to interactively consult the dictionary in order to become familiar with its content.

@@ -82,7 +82,7 @@ set_labels <- function(tbl, dict, vars = NULL, ignore_case = FALSE, warn = TRUE)
       if (warn) {
         tryCatch({
           if (!is.null(dict[[name]][["warn"]])) {
-            cli::cli_alert_warning(paste0(name, ": ", dict[[name]][["warn"]]))
+            cli::cli_alert_warning(paste0(name, ": ", decode_warn(dict[[name]][["warn"]])))
           }
         }, error = function(e){
 
@@ -143,7 +143,7 @@ validateLabs <- function(labs, dict) {
 }
 
 
-decode_lab <- function(lab, enc) {
+decode_lab <- function(lab, enc = "") {
   if (!is.null(lab)) {
     lab <- iconv(lab, to = "utf8")
   }
@@ -151,13 +151,21 @@ decode_lab <- function(lab, enc) {
 }
 
 
-decode_labs <- function(labs, enc) {
+decode_labs <- function(labs, enc = "") {
   if (!is.null(labs)) {
     for (lab in seq_along(names(labs))) {
       names(labs)[lab] <- iconv(names(labs)[lab], to = "utf8")
     }
   }
   labs
+}
+
+
+decode_warn <- function(warn, enc = "") {
+  if (!is.null(warn)) {
+    warn <- iconv(warn, to = "utf8")
+  }
+  warn
 }
 
 

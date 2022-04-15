@@ -48,7 +48,7 @@ browse_dict <- function(dict, ...) {
     datos[nrow(datos), "lab"] <- decode_lab(lab, enc)
     warn <- dict[[name]]$warn
     if(!is.null(warn)) {
-      datos[nrow(datos), "warn"] <- decode_lab(warn, enc)
+      datos[nrow(datos), "warn"] <- decode_warn(warn, enc)
     }
     labs <- dict[[name]]$labs
     labs <- validateLabs(labs, dict)
