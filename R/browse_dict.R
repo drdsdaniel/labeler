@@ -1,13 +1,13 @@
-#' Browse dictionary
+#' Browse Dictionary
 #' `r lifecycle::badge('experimental')`
 #'
-#'  Allows you to browse the dictionary of the surveys in a web interface where
-#'  you can check the name and label of the variables, as well as the data labels.
+#' Allows you to browse the dictionary of the surveys in a web interface, where
+#' you can check the names and labels of the variables, as well as their data labels.
 #'
-#' @param dict database dictionary
-#' @param ... for testing purposes
+#' @param dict A list representing the database dictionary. If not a list, it will be processed by \code{\link{get_dict}}.
+#' @param ... Additional arguments for testing purposes.
 #'
-#' @return a web interface with the data contained in the supplied dictionary
+#' @return A web interface displaying the data contained in the supplied dictionary.
 #'
 #' @export
 #'
@@ -30,42 +30,85 @@
 #' browse_dict(dict)
 #' }
 browse_dict <- function(dict, ...) {
-  datos <- data.frame(
+  .args <- list(...)
+  testing <- isTRUE(.args$testing)
+
+  if (!inherits(dict, "list")) dict <- get_dict(dict)
+
+  datos <- init_datos()
+
+  enc <- dict[["encoding"]]
+  if (is.null(enc)) enc <- ""
+  dict <- dict[names(dict) != "encoding"]
+
+  for (name in names(dict)) {
+    datos <- datos |>
+      dplyr::add_row(
+        var = name,
+        lab = get_lab(dict, name),
+        warn = get_warn(dict, name),
+        labs = get_labs(dict, name)
+      )
+  }
+
+
+  if (testing) {
+    datos
+  } else {
+    generate_dt(datos)
+  }
+}
+
+
+
+get_lab <- function(dict, name) {
+  lab <- dict[[name]]$lab
+  lab <- validateLab(lab, dict)
+  datos[nrow(datos), "lab"] <- decode_lab(lab, enc)
+}
+
+
+get_warn <- function(dict, name) {
+  warn <- dict[[name]]$warn
+  if (!is.null(warn)) {
+    decode_warn(warn, enc)
+  } else {
+    warn
+  }
+}
+
+
+get_labs <- function(dict, name) {
+  labs <- dict[[name]]$labs
+  labs <- validateLabs(labs, dict)
+  labs <- decode_labs(labs, enc)
+  labs2 <- "<div>"
+  for (lab in seq_along(labs)) {
+    labs2 <- paste0(
+      labs2,
+      labs[[lab]],
+      ": ",
+      names(labs)[[lab]],
+      "<br />"
+    )
+  }
+  paste0(labs2, "</div>")
+}
+
+
+
+init_datos <- function() {
+  data.frame(
     var = character(),
     lab = character(),
     labs = character(),
     warn = character()
   )
-  enc <- dict[["encoding"]]
-  if(is.null(enc)){
-    enc <- ""
-  }
-  dict <- dict[names(dict) != "encoding"]
-  for (name in names(dict)) {
-    datos[nrow(datos) + 1, "var"] <- name
-    lab <- dict[[name]]$lab
-    lab <- validateLab(lab, dict)
-    datos[nrow(datos), "lab"] <- decode_lab(lab, enc)
-    warn <- dict[[name]]$warn
-    if(!is.null(warn)) {
-      datos[nrow(datos), "warn"] <- decode_warn(warn, enc)
-    }
-    labs <- dict[[name]]$labs
-    labs <- validateLabs(labs, dict)
-    labs <- decode_labs(labs, enc)
-    labs2 <- "<div>"
-    for (lab in seq_along(labs)) {
-      labs2 <- paste0(
-        labs2,
-        labs[[lab]],
-        ": ",
-        names(labs)[[lab]],
-        "<br />"
-      )
-    }
-    datos[nrow(datos), "labs"] <- paste0(labs2, "</div>")
-  }
-  res <- DT::datatable(datos,
+}
+
+
+generate_dt <- function(datos) {
+  DT::datatable(datos,
     escape = FALSE, width = "100%",
     options = list(
       autoWidth = FALSE,
@@ -75,18 +118,4 @@ browse_dict <- function(dict, ...) {
       )
     )
   )
-
-  testing <- FALSE
-  tryCatch({
-      testing <- list(...)[["testing"]]
-    },
-    error = function(e) {
-    }
-  )
-
-  if (!is.null(testing)) {
-    datos
-  } else {
-   res
-  }
 }
