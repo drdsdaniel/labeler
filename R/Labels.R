@@ -237,13 +237,16 @@ labellize <- function(tbl, var_name, lab, labs) {
 #' use_labels(enft, dict = dict)
 #' }
 use_labels <- function(tbl,
-                       dict,
+                       dict = NULL,
                        vars = NULL,
                        ignore_case = F,
                        check = TRUE,
                        warn = TRUE) {
+  
   if (!is.null(dict)) {
     tbl <- set_labels(tbl, dict, vars, ignore_case, warn)
+  } else {
+    dict <- get_dict(tbl)
   }
   if (!is.null(vars)) {
     names <- vars
