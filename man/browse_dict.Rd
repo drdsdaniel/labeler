@@ -2,22 +2,22 @@
 % Please edit documentation in R/browse_dict.R
 \name{browse_dict}
 \alias{browse_dict}
-\title{Browse dictionary
+\title{Browse Dictionary
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}}
 \usage{
 browse_dict(dict, ...)
 }
 \arguments{
-\item{dict}{database dictionary}
+\item{dict}{A list representing the database dictionary. If not a list, it will be processed by \code{\link{get_dict}}.}
 
-\item{...}{for testing purposes}
+\item{...}{Additional arguments for testing purposes.}
 }
 \value{
-a web interface with the data contained in the supplied dictionary
+A web interface displaying the data contained in the supplied dictionary.
 }
 \description{
-Allows you to browse the dictionary of the surveys in a web interface where
-you can check the name and label of the variables, as well as the data labels.
+Allows you to browse the dictionary of the surveys in a web interface, where
+you can check the names and labels of the variables, as well as their data labels.
 }
 \examples{
 \dontrun{

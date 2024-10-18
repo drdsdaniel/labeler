@@ -1,23 +1,23 @@
-#' Replace non ASCII characters with ASCII equivalents
-#' `r lifecycle::badge('experimental')`
-#'
-#' @param dict [list] A dictionary. See `vignette('labeler', package = "labeler")` for details.
-#' @param .decode [logical] If FALSE (default) the file is encoded for safe writing.
-#' If TRUE the file is decode to UTF-8.
-#'
-#' @return A dictionary with all non ASCII characters replaced with ASCII
-#' @export
-#'
-#' @examples
-#' \dontrun{
-#'    dict = list(
-#'              MARRIED = list(
-#'                "Sí" = 1,
-#'                "No" = 2
-#'              )
-#'            )
-#'    parse_dict(dict)
-#'  }
+# Replace non ASCII characters with ASCII equivalents
+# `r lifecycle::badge('experimental')`
+#
+# @param dict [list] A dictionary. See `vignette('labeler', package = "labeler")` for details.
+# @param .decode [logical] If FALSE (default) the file is encoded for safe writing.
+# If TRUE the file is decode to UTF-8.
+#
+# @return A dictionary with all non ASCII characters replaced with ASCII
+# @export
+#
+# @examples
+# \dontrun{
+#    dict = list(
+#              MARRIED = list(
+#                "Sí" = 1,
+#                "No" = 2
+#              )
+#            )
+#    parse_dict(dict)
+#  }
 parse_dict <- function(dict, .decode = FALSE) {
     for (var in names(dict)) {
       if(!(var %in% c("encoding"))){

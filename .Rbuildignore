@@ -1,3 +1,5 @@
+^renv$
+^renv\.lock$
 ^labeler\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
@@ -10,3 +12,4 @@
 ^codecov\.yml$
 ^contributors\.R$
 ^contributors\.csv$
+^data-raw$

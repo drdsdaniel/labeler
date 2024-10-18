@@ -5,7 +5,14 @@
 \title{Use the data labels of a variable instead of its values
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}}
 \usage{
-use_labels(tbl, dict, vars = NULL, ignore_case = F, check = TRUE, warn = TRUE)
+use_labels(
+  tbl,
+  dict = NULL,
+  vars = NULL,
+  ignore_case = F,
+  check = TRUE,
+  warn = TRUE
+)
 }
 \arguments{
 \item{tbl}{\link{data.frame}: Data.frame with the data}
