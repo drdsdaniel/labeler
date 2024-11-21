@@ -31,6 +31,8 @@
 #' str(set_labels(df, dict = dict))
 #' }
 set_labels <- function(tbl, dict, vars = NULL, ignore_case = FALSE, warn = TRUE) {
+  deprecate_warn("0.1.1", "set_labels()", "set_Dict()", "See the new ?Dict API.")
+
   tbl
   enc <- dict[["encoding"]]
   if (is.null(enc)) {
@@ -80,13 +82,16 @@ set_labels <- function(tbl, dict, vars = NULL, ignore_case = FALSE, warn = TRUE)
         tbl <- labellize(tbl, name, lab, labs)
       }
       if (warn) {
-        tryCatch({
-          if (!is.null(dict[[name]][["warn"]])) {
-            cli::cli_alert_warning(paste0(name, ": ", decode_warn(dict[[name]][["warn"]])))
-          }
-        }, error = function(e){
+        tryCatch(
+          {
+            if (!is.null(dict[[name]][["warn"]])) {
+              cli::cli_alert_warning(paste0(name, ": ", decode_warn(dict[[name]][["warn"]])))
+            }
+          },
+          error = function(e) {
 
-        })
+          }
+        )
       }
     }
   }
@@ -242,7 +247,8 @@ use_labels <- function(tbl,
                        ignore_case = F,
                        check = TRUE,
                        warn = TRUE) {
-  
+  deprecate_warn("0.7.0", "use_labels()", "with_Dict()", "See the new ?Dict API.")
+
   if (!is.null(dict)) {
     tbl <- set_labels(tbl, dict, vars, ignore_case, warn)
   } else {

@@ -23,10 +23,11 @@ A data frame representing the Dict object.
 }
 \description{
 Converts a Dict object to a data frame, where each row represents a variable
-and columns contain the variable's metadata (name, label, type, labels).
+and columns contain the variable's metadata (name, label, dtype, labels).
 }
 \examples{
-# Assuming 'my_dict' is a Dict object
-df <- as.data.frame(my_dict)
-print(df)
+\dontrun{
+    df <- as.data.frame(lbl_df_dict)
+    print(df)
+}
 }

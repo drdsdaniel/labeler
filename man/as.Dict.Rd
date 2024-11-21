@@ -8,9 +8,11 @@
 as.Dict(x, metadata = NULL, ...)
 }
 \arguments{
-\item{x}{A data frame with columns "name", "label", "type", "labels".}
+\item{x}{A data frame with columns "name", "label", "labels", "dtype".}
 
-\item{metadata}{A list containing metadata for the Dict object (optional).}
+\item{metadata}{A list containing metadata for the Dict object (optional).
+It must contain at least a "name" element.
+If NULL, the name of the dataset will be used.}
 
 \item{...}{Additional arguments (currently ignored).}
 }
@@ -21,6 +23,8 @@ A Dict object representing the data dictionary.
 Converts a data frame representing a data dictionary to a Dict object.
 }
 \examples{
-# Assuming 'df' is a data frame with appropriate columns
-my_dict <- as.Dict(df)
+\dontrun{
+    df_dict <- as.data.frame(lbl_df_dict)
+    my_dict <- as.Dict(df_dict)
+}
 }

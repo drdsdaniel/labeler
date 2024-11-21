@@ -19,6 +19,9 @@
 #    parse_dict(dict)
 #  }
 parse_dict <- function(dict, .decode = FALSE) {
+
+  deprecate_warn('0.7.0', 'parse_dict()', details = 'See the new ?Dict API.')
+
     for (var in names(dict)) {
       if(!(var %in% c("encoding"))){
         lab <- dict[[var]][["lab"]]

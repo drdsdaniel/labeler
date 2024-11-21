@@ -1,8 +1,8 @@
 ---
-title: "Easy to use and share labels in R"
+title: "Easy to Use and Share Data Labels in R with Dictionaries"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Easy to use and share labels in R}
+  %\VignetteIndexEntry{Easy to Use and Share Data Labels in R with Dictionaries}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -27,29 +27,17 @@ To provide both a short and a long label, separate them with "||".
 For example: "Age || Age of the respondent".
 Use \code{set_Dict(label_type=)} argument to choose the desired label type.
 By default, the full label (including both parts) will be used.
-\item \strong{labels:} A named vector or list defining the value labels for the variable.
-\item \strong{dtype:} A character string specifying the desired data type of the variable.
-The value "NULL" (as a string) indicates that the existing data type of the variable should be preserved.
+\item \strong{labels:} (optional) A named vector or list defining the value labels for the variable.
+\item \strong{dtype:} (optional) A character string specifying the desired data type of the variable.
 }
 
 The \strong{\code{metadata}} list can contain any relevant information about the dictionary,
 such as the source of the data, creation date, etc. It must contain at least a "name" element.
 }
 \examples{
-my_dict <- Dict(
-  age = list(
-    label = "Age || Age of the respondent", # Short and long label
-    labels = c("Under 18" = 1, "18-24" = 2, "25-34" = 3),
-    dtype = "integer"
-  ),
-  gender = list(
-    label = "Gender",
-    labels = c("Male" = 1, "Female" = 2),
-    dtype = "NULL" # Keep the original data type
-  ),
-  metadata = list(name = "My Survey Dictionary", version = "1.0")
-)
-
-is.Dict(my_dict)
-print(my_dict)
+\dontrun{
+    lbl_df_dict |> unclass() 
+    is.Dict(lbl_df_dict)
+    lbl_df_dict
+}
 }

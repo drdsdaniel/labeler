@@ -1,3 +1,49 @@
+#' Generate a dictionary of given dataset
+#' `r lifecycle::badge("experimental")`
+#'
+#' @param tbl A labelled dataset
+#'
+#' @return A dictionary of the dataset
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#'  get_dict(tbl)
+#' }
+get_dict <- function(tbl){
+
+  deprecate_warn('0.7.0', 'get_dict()', 'gen_Dict()', "See the new ?Dict API.")
+
+  dict0 <- labelled::generate_dictionary(tbl)
+  dict <- list()
+  for (row in 1:nrow(dict0)) {
+    variable <- dict0[["variable"]][[row]]
+    lab <- dict0[["label"]][[row]]
+    labs <- dict0[["value_labels"]][[row]]
+    dict[[variable]] <- list()
+    if(!all(is.na(labs))){
+      dict[[variable]][["labs"]] <- labs
+      dict[[variable]][["lab"]] <- ""
+    }
+    if(!is.na(lab)){
+      dict[[variable]][["lab"]] <- lab
+    }
+    if(length(dict[[variable]]) == 0){
+      dict[[variable]] <- NULL
+    }
+  }
+  dict
+}
+
+
+
+
+
+
+
+
+
 #' Browse Dictionary
 #' `r lifecycle::badge('experimental')`
 #'
@@ -30,24 +76,27 @@
 #' browse_dict(dict)
 #' }
 browse_dict <- function(dict, ...) {
+
+  deprecate_warn('0.7.0', 'browse_dict()', 'dict_browser()', 'See the new ?Dict class.')
+
   .args <- list(...)
   testing <- isTRUE(.args$testing)
 
   if (!inherits(dict, "list")) dict <- get_dict(dict)
 
-  datos <- init_datos()
-
   enc <- dict[["encoding"]]
   if (is.null(enc)) enc <- ""
   dict <- dict[names(dict) != "encoding"]
+
+  datos <- init_datos()
 
   for (name in names(dict)) {
     datos <- datos |>
       dplyr::add_row(
         var = name,
-        lab = get_lab(dict, name),
-        warn = get_warn(dict, name),
-        labs = get_labs(dict, name)
+        lab = get_lab(dict, name, enc),
+        warn = get_warn(dict, name, enc),
+        labs = get_labs(dict, name, enc)
       )
   }
 
@@ -61,14 +110,14 @@ browse_dict <- function(dict, ...) {
 
 
 
-get_lab <- function(dict, name) {
+get_lab <- function(dict, name, enc) {
   lab <- dict[[name]]$lab
   lab <- validateLab(lab, dict)
-  datos[nrow(datos), "lab"] <- decode_lab(lab, enc)
+  decode_lab(lab, enc)
 }
 
 
-get_warn <- function(dict, name) {
+get_warn <- function(dict, name, enc) {
   warn <- dict[[name]]$warn
   if (!is.null(warn)) {
     decode_warn(warn, enc)
@@ -78,7 +127,7 @@ get_warn <- function(dict, name) {
 }
 
 
-get_labs <- function(dict, name) {
+get_labs <- function(dict, name, enc) {
   labs <- dict[[name]]$labs
   labs <- validateLabs(labs, dict)
   labs <- decode_labs(labs, enc)

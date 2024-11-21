@@ -2,6 +2,11 @@
 
     Code
       browse_dict(dict, testing = TRUE)
+    Condition
+      [1m[33mWarning[39m:[22m
+      [1m[22m`browse_dict()` was deprecated in labeler 0.7.0.
+      [36mℹ[39m Please use `dict_browser()` instead.
+      [36mℹ[39m See the new ?Dict class.
     Output
            var                          lab
       1   SEXO           Sexo de la persona

@@ -5,12 +5,13 @@
 \title{Generate a Dictionary from a Dataset
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}}
 \usage{
-gen_Dict(tbl, metadata = attributes(lbl_df)$dict_metadata)
+gen_Dict(tbl, metadata = attributes(tbl)$dict_metadata)
 }
 \arguments{
 \item{tbl}{A labeled dataset.}
 
-\item{metadata}{(Optional) A list containing metadata for the dictionary.
+\item{metadata}{A list containing metadata for the dictionary.
+It must contain at least a "name" element.
 If NULL, the name of the dataset will be used.}
 }
 \value{
@@ -20,6 +21,7 @@ A Dict object representing the dictionary of the dataset.
 Creates a Dict object from a labeled dataset (data.frame or tibble).
 }
 \examples{
-# Assuming 'lbl_df' is a labeled dataset
-my_dict <- gen_Dict(lbl_df)
+\dontrun{
+    my_dict <- gen_Dict(lbl_df)
+}
 }

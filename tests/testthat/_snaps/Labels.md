@@ -23,11 +23,10 @@
 
     Code
       str(setLabels(datos, dict = dict))
-    Warning <lifecycle_warning_deprecated>
-      `setLabels()` was deprecated in endomer 0.1.1.
-      Please use `set_labels()` instead.
-      This warning is displayed once every 8 hours.
-      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+    Condition
+      [1m[33mWarning[39m:[22m
+      [1m[22m`setLabels()` was deprecated in endomer 0.1.1.
+      [36mℹ[39m Please use `set_labels()` instead.
     Output
       'data.frame':	10 obs. of  5 variables:
        $ SEXO  : num  1 1 1 1 1 2 2 2 2 2
@@ -88,6 +87,11 @@
 
     Code
       use_labels(datos, dict = dict)
+    Condition
+      [1m[33mWarning[39m:[22m
+      [1m[22m`use_labels()` was deprecated in labeler 0.7.0.
+      [36mℹ[39m Please use `with_Dict()` instead.
+      [36mℹ[39m See the new ?Dict API.
     Output
            SEXO  Sexo2 Sexo3  ESTADO Altura
       1  Hombre Hombre     1 Soltero      1
@@ -105,11 +109,10 @@
 
     Code
       useLabels(datos, dict = dict)
-    Warning <lifecycle_warning_deprecated>
-      `useLabels()` was deprecated in endomer 0.1.1.
-      Please use `use_labels()` instead.
-      This warning is displayed once every 8 hours.
-      Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+    Condition
+      [1m[33mWarning[39m:[22m
+      [1m[22m`useLabels()` was deprecated in endomer 0.1.1.
+      [36mℹ[39m Please use `use_labels()` instead.
     Output
            SEXO  Sexo2 Sexo3  ESTADO Altura
       1  Hombre Hombre     1 Soltero      1
@@ -178,10 +181,13 @@
 
     Code
       use_labels(datos, dict = dict, ignore_case = T)
-    Message <cliMessage>
-      The following (1) variable was not labeled since it contain values not present in the dictionary:
-      * Altura
-      Please visit <https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels> for more details.
+    Message
+      The following (1) variable was not labeled since it contain values not present in
+      the dictionary:
+      • Altura
+      Please visit
+      <https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels> for
+      more details.
     Output
            SEXO  Sexo2 Sexo3  ESTADO Altura
       1  Hombre Hombre     1 Soltero      2
@@ -199,10 +205,13 @@
 
     Code
       use_labels(dplyr::mutate(datos, Sexo2 = Sexo2 + 1), dict = dict)
-    Message <cliMessage>
-      The following (1) variable was not labeled since it contain values not present in the dictionary:
-      * Sexo2
-      Please visit <https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels> for more details.
+    Message
+      The following (1) variable was not labeled since it contain values not present in
+      the dictionary:
+      • Sexo2
+      Please visit
+      <https://adatar-do.github.io/labeler/articles/labeler.html#checking-labels> for
+      more details.
     Output
            SEXO Sexo2 Sexo3  ESTADO Altura
       1  Hombre     2     1 Soltero      2
@@ -237,7 +246,7 @@
 
     Code
       use_labels(datos, dict = dict)
-    Message <cliMessage>
+    Message
       ! Sexo3: Warning
     Output
            SEXO  Sexo2 Sexo3  ESTADO Altura

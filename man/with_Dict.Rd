@@ -35,7 +35,8 @@ A convenience function to apply a dictionary to a dataset and optionally convert
 with labels as levels or replace column names with variable labels.
 }
 \examples{
-# Assuming 'my_data' is a data.frame and 'my_dict' is a Dict object
-factored_data <- with_Dict(my_data, my_dict, use_labels = TRUE)
-renamed_data <- with_Dict(my_data, my_dict, use_label = TRUE)
+\dontrun{
+    factored_data <- with_Dict(lbl_df, lbl_df_dict, use_labels = TRUE)
+    renamed_data <- with_Dict(lbl_df, lbl_df_dict, use_label = TRUE)
+}
 }

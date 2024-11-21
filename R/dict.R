@@ -14,9 +14,8 @@
 #'   For example: "Age || Age of the respondent".
 #'   Use \code{set_Dict(label_type=)} argument to choose the desired label type.
 #'   By default, the full label (including both parts) will be used.
-#' * **labels:** A named vector or list defining the value labels for the variable.
-#' * **dtype:** A character string specifying the desired data type of the variable.
-#'    The value "NULL" (as a string) indicates that the existing data type of the variable should be preserved.
+#' * **labels:** (optional) A named vector or list defining the value labels for the variable.
+#' * **dtype:** (optional) A character string specifying the desired data type of the variable.
 #'
 #' The **`metadata`** list can contain any relevant information about the dictionary,
 #' such as the source of the data, creation date, etc. It must contain at least a "name" element.
@@ -25,22 +24,11 @@
 #' @export
 #'
 #' @examples
-#' my_dict <- Dict(
-#'   age = list(
-#'     label = "Age || Age of the respondent", # Short and long label
-#'     labels = c("Under 18" = 1, "18-24" = 2, "25-34" = 3),
-#'     dtype = "integer"
-#'   ),
-#'   gender = list(
-#'     label = "Gender",
-#'     labels = c("Male" = 1, "Female" = 2),
-#'     dtype = "NULL" # Keep the original data type
-#'   ),
-#'   metadata = list(name = "My Survey Dictionary", version = "1.0")
-#' )
-#'
-#' is.Dict(my_dict)
-#' print(my_dict)
+#' \dontrun{
+#'     lbl_df_dict |> unclass() 
+#'     is.Dict(lbl_df_dict)
+#'     lbl_df_dict
+#' }
 Dict <- function(..., metadata) {
   # browser()
   if (!is.list(metadata) || length(metadata) < 1) stop("Invalid metadata. Must be a list with at least one element. See ?Dict for more details.")
@@ -53,7 +41,7 @@ Dict <- function(..., metadata) {
     # if (!is.character(.args[[.arg]][["name"]])) stop(paste0("Invalid argument: ", .arg, ". Must have a name element. See ?Dict for more details."))
     if (!is.character(.args[[.arg]][["label"]])) stop(paste0("Invalid argument: ", .arg, ". Must have a label element. See ?Dict for more details."))
     # if (!is.vector(.args[[.arg]][["labels"]])) stop(paste0("Invalid argument: ", .arg, ". Must have a labels element. See ?Dict for more details."))
-    if (!is.character(.args[[.arg]][["dtype"]])) stop(paste0("Invalid argument: ", .arg, ". Must have a dtype element. See ?Dict for more details."))
+    # if (!is.character(.args[[.arg]][["dtype"]])) stop(paste0("Invalid argument: ", .arg, ". Must have a dtype element. See ?Dict for more details."))
     # if (!.args[[.arg]][["dtype"]] %in% c("logical", "integer", "numeric", "character", "Date", "POSIXct", "POSIXlt", "NULL")) {
     #   stop(paste0("Invalid argument: ", .arg, ". Must have a valid dtype element. See ?Dict for more details."))
     # }
@@ -72,6 +60,11 @@ Dict <- function(..., metadata) {
 #'
 #' @return TRUE if x is a valid Dict object, FALSE otherwise.
 #' @export
+#' 
+#' @examples
+#' \dontrun{
+#'     is.Dict(lbl_df_dict)
+#' }
 is.Dict <- function(x) {
   # browser()
   if (!inherits(x, "Dict")) {
@@ -102,9 +95,9 @@ is.Dict <- function(x) {
     # if (!is.vector(x[[.var]][["labels"]])) {
     #   return(FALSE)
     # }
-    if (!is.character(x[[.var]][["dtype"]])) {
-      return(FALSE)
-    }
+    # if (!is.character(x[[.var]][["dtype"]])) {
+    #   return(FALSE)
+    # }
   }
 
   return(TRUE)
@@ -120,26 +113,32 @@ is.Dict <- function(x) {
 #'
 #' @return Invisibly returns the Dict object.
 #' @export
+#' 
+#' @examples
+#' \dontrun{
+#'     print(lbl_df_dict)
+#' }
 print.Dict <- function(x, ...) {
   cat(paste0("Dictionary for '", x$metadata[["name"]], "', with ", length(x) - 1, " variables.\n"))
   for (.meta in names(x$metadata)) {
     cat(paste0("  ", .meta, ": ", x$metadata[[.meta]], "\n"))
   }
-  types <- list()
-  for (var_name in names(x)) {
-    if (var_name == "metadata") next
-    if (is.null(x[[var_name]]$dtype)) {
-      next
-    }
-    type <- x[[var_name]]$dtype
-    if (is.null(types[[type]])) {
-      types[[type]] <- list()
-    }
-    types[[type]] <- c(types[[type]], var_name)
-  }
-  for (type in names(types)) {
-    cat(paste0("  ", type, ": ", paste(types[[type]], collapse = ", "), "\n"))
-  }
+  # TODO: Not all will have a dtype...
+  # types <- list()
+  # for (var_name in names(x)) {
+  #   if (var_name == "metadata") next
+  #   if (is.null(x[[var_name]]$dtype)) {
+  #     next
+  #   }
+  #   type <- x[[var_name]]$dtype
+  #   if (is.null(types[[type]])) {
+  #     types[[type]] <- list()
+  #   }
+  #   types[[type]] <- c(types[[type]], var_name)
+  # }
+  # for (type in names(types)) {
+  #   cat(paste0("  ", type, ": ", paste(types[[type]], collapse = ", "), "\n"))
+  # }
 }
 
 
@@ -152,16 +151,18 @@ print.Dict <- function(x, ...) {
 #' Creates a Dict object from a labeled dataset (data.frame or tibble).
 #'
 #' @param tbl A labeled dataset.
-#' @param metadata (Optional) A list containing metadata for the dictionary.
+#' @param metadata A list containing metadata for the dictionary.
+#'   It must contain at least a "name" element.
 #'   If NULL, the name of the dataset will be used.
 #'
 #' @return A Dict object representing the dictionary of the dataset.
 #' @export
 #'
 #' @examples
-#' # Assuming 'lbl_df' is a labeled dataset
-#' my_dict <- gen_Dict(lbl_df)
-gen_Dict <- function(tbl, metadata = attributes(lbl_df)$dict_metadata) {
+#' \dontrun{
+#'     my_dict <- gen_Dict(lbl_df)
+#' }
+gen_Dict <- function(tbl, metadata = attributes(tbl)$dict_metadata) {
   # browser()
   dict0 <- labelled::generate_dictionary(tbl)
   dict <- list()
@@ -196,7 +197,7 @@ gen_Dict <- function(tbl, metadata = attributes(lbl_df)$dict_metadata) {
 #' `r lifecycle::badge("experimental")`
 #'
 #' Converts a Dict object to a data frame, where each row represents a variable
-#' and columns contain the variable's metadata (name, label, type, labels).
+#' and columns contain the variable's metadata (name, label, dtype, labels).
 #'
 #' @param x A Dict object.
 #' @param row.names NULL or a character vector giving the row names for the data frame.
@@ -209,9 +210,10 @@ gen_Dict <- function(tbl, metadata = attributes(lbl_df)$dict_metadata) {
 #' @export
 #'
 #' @examples
-#' # Assuming 'my_dict' is a Dict object
-#' df <- as.data.frame(my_dict)
-#' print(df)
+#' \dontrun{
+#'     df <- as.data.frame(lbl_df_dict)
+#'     print(df)
+#' }
 as.data.frame.Dict <- function(x, row.names = NULL, optional = FALSE, ...) {
   if (!is.Dict(x)) {
     stop("`x` must be a Dict object. See ?Dict for details.")
@@ -220,8 +222,8 @@ as.data.frame.Dict <- function(x, row.names = NULL, optional = FALSE, ...) {
   data <- data.frame(
     name = character(),
     label = character(),
-    type = character(),
     labels = character(),
+    dtype = character(),
     stringsAsFactors = FALSE
   )
 
@@ -232,8 +234,8 @@ as.data.frame.Dict <- function(x, row.names = NULL, optional = FALSE, ...) {
       dplyr::add_row(
         name = var_name,
         label = x[[var_name]]$label,
-        type = x[[var_name]]$dtype,
         labels = .format_labels_df(x[[var_name]]$labels),
+        dtype = x[[var_name]]$dtype,
       )
   }
 
@@ -266,22 +268,26 @@ as.data.frame.Dict <- function(x, row.names = NULL, optional = FALSE, ...) {
 #'
 #' Converts a data frame representing a data dictionary to a Dict object.
 #'
-#' @param x A data frame with columns "name", "label", "type", "labels".
+#' @param x A data frame with columns "name", "label", "labels", "dtype".
 #' @param metadata A list containing metadata for the Dict object (optional).
+#'   It must contain at least a "name" element.
+#'   If NULL, the name of the dataset will be used.
 #' @param ... Additional arguments (currently ignored).
 #'
 #' @return A Dict object representing the data dictionary.
 #' @export
 #'
 #' @examples
-#' # Assuming 'df' is a data frame with appropriate columns
-#' my_dict <- as.Dict(df)
+#' \dontrun{
+#'     df_dict <- as.data.frame(lbl_df_dict)
+#'     my_dict <- as.Dict(df_dict)
+#' }
 as.Dict <- function(x, metadata = NULL, ...) {
   if (!is.data.frame(x)) {
     stop("`x` must be a data frame. See ?data.frame for details.")
   }
 
-  required_cols <- c("name", "label", "type", "labels")
+  required_cols <- c("name", "label", "labels", "dtype")
   if (!all(required_cols %in% names(x))) {
     missing_cols <- required_cols[!required_cols %in% names(x)]
     stop(paste("Missing required columns:", paste(missing_cols, collapse = ", ")))
@@ -298,7 +304,7 @@ as.Dict <- function(x, metadata = NULL, ...) {
       name = var_name,
       label = x$label[i],
       labels = .parse_labels_df(x$labels[i]),
-      dtype = x$type[i]
+      dtype = x$dtype[i]
     )
   }
 
@@ -351,8 +357,9 @@ as.Dict <- function(x, metadata = NULL, ...) {
 #' @export
 #'
 #' @examples
-#' # Assuming 'my_data' is a data.frame and 'my_dict' is a Dict object
-#' labeled_data <- set_Dict(my_data, my_dict)
+#' \dontrun{
+#'     labeled_data <- set_Dict(lbl_df, lbl_df_dict)
+#' }
 set_Dict <- function(tbl, dict, subset = NULL, dtypes = TRUE, label_type = c("full", "label", "name")) {
   # browser()
   if (!is.Dict(dict)) stop("dict must be a Dict object. See ?Dict for more details.")
@@ -404,14 +411,11 @@ set_Dict <- function(tbl, dict, subset = NULL, dtypes = TRUE, label_type = c("fu
 .apply_Dict_types <- function(tbl, dict, subset = NULL) {
   for (variable in subset) {
     if (!variable %in% names(tbl)) {
-      # missing_vars <- c(missing_vars, variable)
       next
     }
 
     if (!is.null(dict[[variable]][["dtype"]])) {
-      if (dict[[variable]][["dtype"]] != "NULL") {
         class(tbl[[variable]]) <- dict[[variable]][["dtype"]]
-      }
     }
   }
 
@@ -419,10 +423,10 @@ set_Dict <- function(tbl, dict, subset = NULL, dtypes = TRUE, label_type = c("fu
 }
 
 
-#   lbl_df |> use_Dict(lbl_df_dict) |> dplyr::count(sex, haven::as_factor(sex)) |> haven::as_factor()
-#   lbl_df |> use_Dict(lbl_df_dict) |> dplyr::pull(sex) |> str()
-#   lbl_df |> use_Dict(lbl_df_dict) |> dplyr::select(sex)
-#   lbl_df |> use_Dict(lbl_df_dict) |> dplyr::count(sex) |> sjlabelled::label_to_colnames() |> sjlabelled::as_label()
+#   lbl_df |> set_Dict(lbl_df_dict) |> dplyr::count(sex, haven::as_factor(sex)) |> haven::as_factor()
+#   lbl_df |> set_Dict(lbl_df_dict) |> dplyr::pull(sex) |> str()
+#   lbl_df |> set_Dict(lbl_df_dict) |> dplyr::select(sex)
+#   lbl_df |> set_Dict(lbl_df_dict) |> dplyr::count(sex) |> sjlabelled::label_to_colnames() |> sjlabelled::as_label()
 
 
 #' Work with a Dataset Using a Dictionary
@@ -442,9 +446,10 @@ set_Dict <- function(tbl, dict, subset = NULL, dtypes = TRUE, label_type = c("fu
 #' @export
 #'
 #' @examples
-#' # Assuming 'my_data' is a data.frame and 'my_dict' is a Dict object
-#' factored_data <- with_Dict(my_data, my_dict, use_labels = TRUE)
-#' renamed_data <- with_Dict(my_data, my_dict, use_label = TRUE)
+#' \dontrun{
+#'     factored_data <- with_Dict(lbl_df, lbl_df_dict, use_labels = TRUE)
+#'     renamed_data <- with_Dict(lbl_df, lbl_df_dict, use_label = TRUE)
+#' }
 with_Dict <- function(tbl, dict = NULL, subset = NULL, use_label = TRUE, use_labels = TRUE, ...) {
   if (!is.null(dict)) {
     tbl <- set_Dict(tbl, dict, subset = subset, ...)
@@ -470,3 +475,52 @@ with_Dict <- function(tbl, dict = NULL, subset = NULL, use_label = TRUE, use_lab
 }
 
 #   lbl_df |> set_Dict(lbl_df_dict, label_type = "name") |> dplyr::count(sex) |> with_Dict(subset = "sex")
+
+
+#' Browse a Data Dictionary Interactively
+#' `r lifecycle::badge("experimental")`
+#'
+#' Displays a data dictionary in an interactive web interface using the DT package.
+#' Accepts either a `Dict` object or a labeled `data.frame` as input.
+#'
+#' @param x A `Dict` object or a labeled `data.frame`.
+#' @param .interactive Logical. If TRUE (default and when interactive session is detected), 
+#'   an interactive DT::datatable is displayed. If FALSE, a data frame representation of 
+#'   the dictionary is returned.
+#'
+#' @return An interactive DT::datatable (if `.interactive` is TRUE) or a data frame 
+#'   representation of the dictionary (if `.interactive` is FALSE).
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#'     # Passing a Dict object
+#'     dict_browser(lbl_df_dict)
+#'     # Passing a labeled data.frame will automatically generate a Dict object
+#'     dict_browser(set_Dict(lbl_df, lbl_df_dict))
+#'     
+#'     # For non-interactive use:
+#'     df <- dict_browser(lbl_df_dict, .interactive = FALSE)
+#'     print(df)
+#' }
+dict_browser <- function(x, .interactive = interactive()) {
+  if (is.Dict(x)) {
+    tab <- x |> 
+      as.data.frame()
+  } else if (is.data.frame(x)) {
+    tab <- x |> 
+      gen_Dict() |> 
+      as.data.frame()
+  } else {
+    stop("x must be a ?Dict or labelled data.frame")
+  }
+
+  if (.interactive) {
+    rlang::check_installed('DT')
+    tab |> 
+      dplyr::mutate(labels = labels) |> # TODO: Apply html to improve read... 
+      DT::datatable()
+  } else {
+    tab
+  }
+}

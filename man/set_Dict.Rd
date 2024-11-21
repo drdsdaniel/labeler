@@ -34,6 +34,7 @@ The dataset with labels and data types applied according to the dictionary.
 Applies labels and data types defined in a Dict object to a dataset.
 }
 \examples{
-# Assuming 'my_data' is a data.frame and 'my_dict' is a Dict object
-labeled_data <- set_Dict(my_data, my_dict)
+\dontrun{
+    labeled_data <- set_Dict(lbl_df, lbl_df_dict)
+}
 }

@@ -17,3 +17,8 @@ Invisibly returns the Dict object.
 \description{
 Print Method for Dict Objects
 }
+\examples{
+\dontrun{
+    print(lbl_df_dict)
+}
+}
