@@ -15,3 +15,32 @@ authors:
   sidebar:
     roles: [aut, cph]
 
+reference:
+- title: Dictionary creation and conversion
+  desc: Functions to create, convert, and inspect dictionaries.
+  contents:
+  - Dict
+  - gen_Dict
+  - dict_browser
+  - is.Dict
+  - as.Dict
+  - print.Dict
+  - as.data.frame.Dict
+
+- title: Applying and using Dictionaries
+  desc: Functions to apply dictionaries to data and utilize label information.
+  contents:
+  - set_Dict
+  - with_Dict
+
+- title: Testing resources
+  desc: Data and Dictionary objects used for testing purposes.
+  contents:
+  - lbl_df
+  - lbl_df_dict
+
+- title: Old API functions
+  desc: Functions from the previous version of labeler. These are deprecated and will be removed in the future.
+  contents:
+  - set_labels
+  - use_labels

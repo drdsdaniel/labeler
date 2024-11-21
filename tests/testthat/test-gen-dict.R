@@ -18,7 +18,7 @@ test_that("gen_Dict - basic functionality", {
     gender = list(
       label = "Gender || What is your gender?",
       labels = c("Male" = 1, "Female" = 2),
-      dtype = "factor"
+      dtype = "integer"
     ),
     age = list(
       label = "Age || What is your age?",
@@ -27,7 +27,7 @@ test_that("gen_Dict - basic functionality", {
     education = list(
       label = "Education || What is your highest level of education?",
       labels = c("High School" = 1, "Bachelor's" = 2, "Master's" = 3),
-      dtype = "factor"
+      dtype = "integer"
     ),
     income = list(
       label = "Income || What is your annual income?",
@@ -65,6 +65,11 @@ test_that("gen_Dict - basic functionality", {
 
   # ... Add similar checks for other variables (age, education, income) ...
 })
+
+
+
+
+
 
 test_that("gen_Dict - with custom metadata", {
   # Simulate a simple dataset

@@ -36,22 +36,46 @@ This package contains functions to assign and use data labels in an easy and eff
 
 `labeler` is not available in CRAN.
 
-But you can install the development version from [GitHub](https://github.com/) with:
+But you can install the development version from [Adatar's r-universe](https://adatar.r-universe.dev/ui#builds) with:
 
-``` r
-tryCatch(
-  library(remotes),
-  error = function(e){
-    install.packages('remotes')
-  }
-)
-remotes::install_github("adatar-do/labeler")
+```r
+install.packages(
+  "labeler", 
+  repos = 
+    c(
+      "https://adatar-do.r-universe.dev", 
+      "https://cloud.r-project.org"
+    )
+  )
 ```
 
+## Roadmap
+
+- [ ] Pattern ("link::") to reuse labels between variables.
+- [ ] ¿Read and write Dict objects to and from JSON files?
+
+### Converting from old dictionaries
+
+::: {.callout-warning icon="false"}
+## Converting old dictionaries
+
+The `link::` syntax for linking labels between variables is **not supported** in the new `Dict` format. When converting an old dictionary using `as.Dict()`, any instances of `link::` will be **ignored**, and a warning will be issued. 
+
+It's crucial to **update your old dictionaries** to the new format by explicitly defining the `label` and `labels` for each variable. See the documentation for `Dict()` and the examples in the vignette for guidance on creating valid dictionaries. Failing to update your dictionaries may lead to unexpected behavior.
+
+You can convert old dictionaries to the new format using `as.Dict()`.
+
+```r
+old_dict <- list(...) # Ejemplo de diccionario antiguo
+
+new_dict <- as.Dict(old_dict, metadata = list(name = "converted_dict"))
+new_dict
+```
+:::
+ 
 ## Contributing
 
 Have a feedback or want to contribute?
-
 
 Please take a look at the [contributing guidelines](https://adatar-do.github.io/labeler/CONTRIBUTING.html) before filing an issue or pull request.
 

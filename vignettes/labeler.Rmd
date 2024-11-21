@@ -13,7 +13,6 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 
-
 library(labeler)
 ```
 
@@ -23,29 +22,73 @@ Historically, software like SPSS, SAS or Stata have worked with labelled data. T
 
 Being able to work with labelled data is one of the features that R users who come from the previously mentioned systems miss the most. Especially when processing survey and census data.
 
-In the R ecosystem there are 3 fundamental packages for working with labelled data `haven`, `labelled` y `sjlabelled`[^1]. However, these packages work in a similar way. They all expect you to load previously labelled data or assign the labels manually for each of the variables.
+In the R ecosystem there are 3 fundamental packages for working with labelled data `haven`, `labelled` and `sjlabelled`[^1]. However, these packages work similarly, expecting pre-labelled data or manual label assignment for each variable.
 
 [^1]: See <https://www.pipinghotdata.com/posts/2020-12-23-leveraging-labelled-data-in-r/>
 
-If you work with a dozen variables, this scheme is possible. However, as the number of variables grows, this scheme becomes difficult to handle. It should even be noted that some operations in R remove most of the attributes on objects, so perhaps some labels may even have to be assigned repeatedly.
+Manual labelling becomes cumbersome with numerous variables, especially as some R operations remove attributes, requiring repeated label assignments. 
 
-In this sense, `labeler` offers a new scheme to work with labelled data in R, which is based on:
+> **`labeler` offers a new scheme based on dictionaries and delayed, semi-automated label application.**
 
-1. The data does not need to be pre-labelled or manually labelled. For these purposes a dictionary, that may have been received with the data or built on the fly, is used.
-2. The assignment of the labels is done at the end of the pipeline, and in a semi-automated way.
+Excelente, con esta nueva función `gen_Dict()`, la sección de *The dictionary* del vignette se puede mejorar aún más, incorporando la capacidad de generar diccionarios automáticamente a partir de dataframes etiquetados. Aquí te propongo la versión revisada de esa sección:
 
 ## The dictionary
 
-The `dictionary` object consists of a list that contains each of the variables to be labeled. The `variables` in turn, consist of lists that contain inside:
+The dictionary is a `Dict` object created with the `Dict()` function. It contains a list of variables, each a list with:
 
-1. **lab**: A character string that describes the variable.
-2. **labs**: A named vector of the possible values that the variable takes.
-3. **warn** (optional): A character string that describes the warning that should be shown when the variable is labeled.
+* **label:** A character string describing the variable (can include a short name before "||" and a long description after).
+* **labels:** A named vector or list defining value labels.
+* **dtype:** (Optional) A character string specifying the desired data type.
 
-In this sense, a valid dictionary in `labeler` can be built and is displayed as follows:
+A valid dictionary is created as follows:
 
 ```{r}
-dict <- list(
+dict <- Dict(
+  GENDER = list(
+    label = "Gender || Gender of the person",
+    labels = c("Man" = 1, "Woman" = 2),
+    dtype = "integer"
+  ),
+  AGE = list(
+    label = "Age || Age of the person",
+    dtype = "integer"
+  ),
+  SEX = list(
+    label = "Sex || Gender of the person",
+    labels = c("Man" = 1, "Woman" = 2),
+    dtype = "integer"
+  ),
+  Married = list(
+    label = "Marital Status || Indicates whether or not the person is married",
+    labels = c("No" = 0, "Yes" = 1),
+    dtype = "integer"
+  ),
+  metadata = list(name = "mydata")
+)
+
+dict
+```
+
+### Building a dictionary automatically
+
+If you're working with an already labelled dataset, `labeler` can automatically generate a dictionary using the `gen_Dict()` function. This simplifies the process considerably.
+
+```{r}
+lbl_df <- set_Dict(lbl_df, lbl_df_dict)
+str(lbl_df)
+```
+
+```{r}
+generated_dict <- gen_Dict(lbl_df) 
+str(generated_dict)
+```
+
+### Converting from old dictionaries
+
+You can convert old dictionaries to the new format using `as.Dict()`. However, linked labels (`link::`) are not supported and will be ignored with a warning.
+
+```{r}
+old_dict <- list(
   GENDER = list(
     lab = "Gender of the person",
     labs = c("Man" = 1, "Woman" = 2)
@@ -54,134 +97,73 @@ dict <- list(
     lab = "Age of the person"
   ),
   SEX = list(
-    lab = "link::GENDER",
-    labs = "link::GENDER"
-  ),
-  Married = list(
-    lab = "Indicates whether or not the person is married",
-    labs = c("No" = 0, "Yes" = 1)
+    lab = "link::GENDER",  # This will generate a warning
+    labs = "link::GENDER" # This will generate a warning
   )
 )
+
+new_dict <- as.Dict(old_dict, metadata = list(name = "converted_dict"))
+new_dict
 ```
-
-Following these basic criteria, you can create a custom dictionary, either by building it from scratch, or by adding the necessary labels for the variables that you create through your analysis.
-
-### Building a dictionary, ¿automatically?
-
-If you are working with a labelled dataset, you can use the `labeler` package to automatically build a dictionary. This is done by using the `labeler::get_dictionary` function. This function takes as input the labeled dataset, and returns a dictionary in the structure described above.
-
-### Parsing the dictionary
-
-Working with non-ASCII characters in R is a tedious task. `labeler` offers a way to work with non-ASCII characters in dictionaries. For these purposes there is the `parse_dict()` function that allows parsing a dictionary to replace these characters. Note that this process is necessary only if the dictionary is intended to be saved as a valid R object, as part of a package for example. The other functions in `labeler` are designed to reverse this automatic forming process.
-
-> parse_dict(.decode = TRUE) para cuando el diccionario contiene letras no ASCII.
 
 ### Browsing the dictionary
 
-Using the `browse_dict()` function, the user will be able to interactively consult the dictionary in order to become familiar with its content.
+Use `dict_browser()` to interactively explore the dictionary:
 
-```{r}
-browse_dict(dict)
+```{r eval=FALSE}
+dict_browser(dict) 
 ```
-
 
 ## Setting the labels
 
-The function `set_labels()`, has as main objective to take the labels of variables and values available in a dictionary and apply them to a data table or dataframe.
+`set_Dict()` applies the dictionary to a data frame.
 
 ```{r}
 mydata <- data.frame(
   GENDER = c(rep(1, 5), rep(2, 5)),
   AGE = c(seq(1, 30, 3)),
   SEX = c(rep(1, 5), rep(2, 5)),
-  MARRIED = c(rep(0, 4), rep(1, 6))
+  Married = c(rep(0, 4), rep(1, 6))
 )
+
+labeled_data <- set_Dict(mydata, dict)
+str(labeled_data)
 ```
 
-In the code below, just by applying the `set_labels ()` function our data now contains labels we can use in our analysis.
+Subset application:
 
 ```{r}
-str(mydata)
+labeled_data_subset <- set_Dict(mydata, dict, subset = c("GENDER"))
+str(labeled_data_subset)
 
-str(set_labels(mydata, dict = dict))
-```
-
-It is important to mention that as indicated in the description of the function's arguments, it is possible to assign the data labels to specific variables.
-
-```{r}
-str(set_labels(mydata, dict = dict, vars = c("GENDER")))
-```
-
-Compare this result with the previous one to notice that in this case the `GENDER` variable contains data labels, as indicated in the function call.
-
-If you have paid enough attention to the output of the code, you will have noticed that the data labels have never been assigned to the `MARRIED` variable. This is so, because R is case-sensitive, which means that `MARRIED` as stated in the dataset is not the same as `Married` as stated in the dictionary. Fortunately, the `ignore_case` argument of the `set_labels` function is designed especially for this purpose. As shown below, using this argument you can make labels are assigned to this variable as well.
-```{r}
-str(set_labels(mydata, dict = dict, ignore_case = T))
-```
-
-However, depending on the size and origin of your data set and dictionary, you should be cautious with this option, to avoid unexpected results. So it might be a good idea to use this argument when specifying target variables.
-
-Another detail, which if you are a good observer you will have noticed, is the use of the wildcard `link::` in the definition of the labels of the `SEX` variable. In this case, as you will guess when you see the labels that are assigned to this last variable, what is achieved by using this wildcard is to reference the labels between one variable and another. This way, if you create a variable that uses exactly the same labels as another, it will be much easier to add the same to the dictionary. Of course, a more plausible option is to create your own custom dictionary of frequently created variables that you can reuse from analysis to analysis.
-
-Also, if for some reason you want to overwrite some of the predefined tags in the dictionary, you just need to take into account the structure of the dictionary and make the required replacements. For example, if instead of `Man / Woman` you want to use the abbreviations of these words, you can get it with the code below.
-```{r}
-dict[["SEX"]]$labs <- c("M" = 1, "W" = 2)
-
-str(set_labels(mydata, dict = dict, vars = c("SEX")))
+labeled_data_case_insensitive <- set_Dict(mydata, dict, dtypes = FALSE) # dtypes are applied in set_Dict, not in with_Dict
+str(labeled_data_case_insensitive)
 ```
 
 ## Using the labels
 
-As you may have noticed in all the previous examples, we have used the `str()` function to show the changes in the data, resulting from the application of the labels. This is so, because even having assigned the labels, your data still looks exactly the same. At this point the `use_labels()` function comes into play, which allows us to substitute the values of a variable for the corresponding labels.
+`with_Dict()` converts labelled values to their labels and/or replaces column names with variable labels:
+
 ```{r}
-use_labels(mydata, dict = dict, ignore_case = T)
+# Convert values to labels
+data_with_labels <- with_Dict(mydata, dict, use_labels = TRUE)
+print(data_with_labels)
+
+# Replace column names with labels
+data_with_label_names <- with_Dict(mydata, dict, use_label = TRUE, dtypes = FALSE) 
+print(data_with_label_names)
+
+# Combine both operations
+data_with_both <- with_Dict(mydata, dict, use_label = TRUE, use_labels = TRUE, dtypes = FALSE)
+print(data_with_both)
 ```
 
-You can use the `set_labels()` function to assign the labels at a point in the pipeline, and the `use_labels()` function at a later stage to use them. Or you can, as shown below and the easiest way, pass the dictionary directly to the `use_labels()` function which will take care of calling the `set_labels()` function automatically. Anyway, a more convenient option is to assign / use the labels once a summary table of the data has been generated. What has the advantage of operating on a smaller number of variables.
+Piping with dplyr:
+
 ```{r}
 mydata %>% 
-  dplyr::group_by(
-    gender = GENDER,
-    united = MARRIED
-  ) %>% 
+  set_Dict(dict, label_type = "name") %>%
+  dplyr::group_by(GENDER, Married) %>% 
   dplyr::count() %>% 
-  set_labels(dict = dict, ignore_case = T) %>% 
-  use_labels(NULL)
-```
-
-As can be seen in the previous example, even though the `GENDER` variable has been renamed, just by assigning the `ignore_case = TRUE` argument, the function was able to assign the data labels. While in the case of the variable `MARRIED` the name has been changed to one that is not present in the dictionary, so the function was not able to find the corresponding labels. This could have been achieved in the following way, for example:
-```{r}
-mydata %>% 
-  dplyr::group_by(
-    gender = GENDER, 
-    married = MARRIED
-    ) %>% 
-  dplyr::count() %>% 
-  use_labels(dict = dict, ignore_case = T) %>% 
-  dplyr::rename("united" = "married")
-```
-
-Furthermore, regardless of which variables have assigned labels, it is possible to specify which of them you want to use. This is possible using the `vars` argument. Note also that the arguments can be combined, arriving at the desired result.
-```{r}
-mydata %>% 
-  dplyr::group_by(
-    gender = GENDER, 
-    married = MARRIED
-    ) %>% 
-  dplyr::count() %>% 
-  use_labels(dict = dict, vars = c("gender"), ignore_case = T) %>% 
-  dplyr::rename("united" = "married")
-```
-
-## Checking labels
-
-When variables contain values that are not in the dictionary, `use_labels()` by **default** prevents labels from being assigned to these variables and prints a warning in the console indicating the variables that could not be labeled. You can assign the argument `use_labels(..., check = FALSE)` so that the labels are used regardless of those values that are not present in the dictionary, which will be converted to `NA`. In this sense, the best option is to add to the dictionary all the values that the variable has to take. If you just want to avoid the console warning, use the `vars` argument to specify the variables to be labelled, excluding the conflicting variables.
-```{r}
-mydata %>% 
-  dplyr::group_by(
-    GENDER, 
-    SEX = SEX + 1
-    ) %>% 
-  dplyr::count() %>% 
-  use_labels(dict = dict)
+  with_Dict(use_labels = TRUE)
 ```

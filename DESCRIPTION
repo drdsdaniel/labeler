@@ -1,6 +1,6 @@
 Package: labeler
 Title: Easy to Use and Share Data Labels in R with Dictionaries
-Version: 0.7.0
+Version: 0.9.0
 Authors@R:
     c(person(given = "Daniel E.",
            family = "de la Rosa",
@@ -19,22 +19,18 @@ RoxygenNote: 7.3.2
 URL: https://github.com/adatar-do/labeler
 BugReports: https://github.com/adatar-do/labeler/issues
 Imports: 
-    lifecycle,
-    magrittr,
-    sjlabelled
-Suggests:
-    cli,
-    covr,
-    dplyr,
-    DT,
     haven,
+    sjlabelled,
+    dplyr,
+    magrittr,
+    lifecycle,
+    rlang
+Suggests:
     knitr,
+    DT,
     labelled,
-    readr,
-    rlang,
-    rmarkdown,
-    testthat
+    cli
 RdMacros: lifecycle
 VignetteBuilder: knitr
-Depends: 
+Depends:
     R (>= 2.10)

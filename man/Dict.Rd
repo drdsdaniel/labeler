@@ -36,7 +36,7 @@ such as the source of the data, creation date, etc. It must contain at least a "
 }
 \examples{
 \dontrun{
-    lbl_df_dict |> unclass() 
+    lbl_df_dict |> unclass()
     is.Dict(lbl_df_dict)
     lbl_df_dict
 }
